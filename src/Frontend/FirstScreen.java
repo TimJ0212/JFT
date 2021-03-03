@@ -102,7 +102,8 @@ public class FirstScreen {
 			public void actionPerformed(ActionEvent e) {
 				String email = textField.getText();
 				String password = textField_1.getText();
-				Backend.Hauptklasse.printeln(email, password);
+				System.out.println(email + " "+ password);
+				//TODO: Open the Authenticator 
 			}
 		});
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
