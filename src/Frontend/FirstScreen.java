@@ -46,6 +46,7 @@ public class FirstScreen {
 	 */
 	private void initialize() {
 		frmJft = new JFrame();
+		frmJft.getContentPane().setBackground(new java.awt.Color(224,229,225));
 		frmJft.setTitle("JFT");
 		frmJft.setBounds(100, 100, 450, 300);
 		frmJft.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

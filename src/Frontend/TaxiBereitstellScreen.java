@@ -48,6 +48,7 @@ public class TaxiBereitstellScreen {
 		frmDuMchtestDein = new JFrame();
 		frmDuMchtestDein.setTitle("Du möchtest dein Taxi bereistellen?");
 		frmDuMchtestDein.setBounds(100, 100, 450, 300);
+		frmDuMchtestDein.getContentPane().setBackground(new java.awt.Color(224,229,225));
 		frmDuMchtestDein.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{187, 0, 0};
