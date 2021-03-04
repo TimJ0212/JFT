@@ -10,6 +10,6 @@ MfG.
 
 Colors:
 
-Background: #B3BFB8
-Buttons: #7E8D85
-Text: #3C493F
+- ![#B3BFB8](https://via.placeholder.com/15/B3BFB8/000000?text=+) `Background: #B3BFB8`
+- ![#7E8D85](https://via.placeholder.com/15/7E8D85/000000?text=+) `Buttons: #7E8D85`
+- ![#3C493F](https://via.placeholder.com/15/3C493F/000000?text=+) `Text: #3C493F`
