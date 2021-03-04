@@ -104,6 +104,11 @@ public class FirstScreen {
 				String password = textField_1.getText();
 				System.out.println(email + " "+ password);
 				//TODO: Open the Authenticator 
+				if(true) { //Mit Methodenaufruf ersetzen
+				
+				Frontend.Menue.main(null);
+				frmJft.dispose();
+				}
 			}
 		});
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
