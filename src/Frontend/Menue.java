@@ -43,7 +43,7 @@ public class Menue {
 	private void initialize() {
 		frmMen = new JFrame();
 		frmMen.setTitle("Menü");
-		frmMen.getContentPane().setBackground(new Color(255, 204, 204));
+		frmMen.getContentPane().setBackground(new java.awt.Color(224,229,225));
 		frmMen.setBackground(new Color(250, 235, 215));
 		frmMen.setBounds(100, 100, 450, 300);
 		frmMen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
