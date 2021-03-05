@@ -7,8 +7,6 @@ import java.io.IOException;
 import java.text.ParseException;
 import org.json.simple.*;
 
-public static final String filepath = "testjson.json";
-
 
 public class functions {
     public static void registerUSer(User user) throws IOException, ParseException {
