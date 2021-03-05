@@ -10,6 +10,8 @@ import java.awt.Insets;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.text.ParseException;
 import java.awt.event.ActionEvent;
 
 public class FirstScreen {
@@ -46,24 +48,24 @@ public class FirstScreen {
 	 */
 	private void initialize() {
 		frmJft = new JFrame();
-		frmJft.getContentPane().setBackground(new java.awt.Color(224,229,225));
+		frmJft.getContentPane().setBackground(new java.awt.Color(224, 229, 225));
 		frmJft.setTitle("JFT");
 		frmJft.setBounds(100, 100, 450, 300);
 		frmJft.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWidths = new int[] { 0, 0, 0, 0, 0, 0 };
+		gridBagLayout.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
+		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 1.0, 0.0, 1.0, Double.MIN_VALUE };
+		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		frmJft.getContentPane().setLayout(gridBagLayout);
-		
+
 		JLabel lblNewLabel = new JLabel("Wilkommen bei JFT-Taxi");
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel.gridx = 2;
 		gbc_lblNewLabel.gridy = 0;
 		frmJft.getContentPane().add(lblNewLabel, gbc_lblNewLabel);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("Email");
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 		gbc_lblNewLabel_1.anchor = GridBagConstraints.EAST;
@@ -71,7 +73,7 @@ public class FirstScreen {
 		gbc_lblNewLabel_1.gridx = 1;
 		gbc_lblNewLabel_1.gridy = 3;
 		frmJft.getContentPane().add(lblNewLabel_1, gbc_lblNewLabel_1);
-		
+
 		textField = new JTextField();
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.insets = new Insets(0, 0, 5, 5);
@@ -80,7 +82,7 @@ public class FirstScreen {
 		gbc_textField.gridy = 3;
 		frmJft.getContentPane().add(textField, gbc_textField);
 		textField.setColumns(10);
-		
+
 		JLabel lblNewLabel_2 = new JLabel("Passwort");
 		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
 		gbc_lblNewLabel_2.anchor = GridBagConstraints.EAST;
@@ -88,7 +90,7 @@ public class FirstScreen {
 		gbc_lblNewLabel_2.gridx = 1;
 		gbc_lblNewLabel_2.gridy = 4;
 		frmJft.getContentPane().add(lblNewLabel_2, gbc_lblNewLabel_2);
-		
+
 		textField_1 = new JTextField();
 		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
 		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
@@ -97,18 +99,27 @@ public class FirstScreen {
 		gbc_textField_1.gridy = 4;
 		frmJft.getContentPane().add(textField_1, gbc_textField_1);
 		textField_1.setColumns(10);
-		
+
 		JButton btnNewButton = new JButton("Login");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String email = textField.getText();
 				String password = textField_1.getText();
-				System.out.println(email + " "+ password);
-				//TODO: Open the Authenticator 
-				if(true) { //Mit Methodenaufruf ersetzen
-				
-				Frontend.Menue.main(null);
-				frmJft.dispose();
+				System.out.println(email + " " + password);
+
+				try {
+					if (functions.login(email, password)) { // Email durch Username ersetzen
+						Frontend.Menue.main(null);
+						frmJft.dispose();
+					} else {
+						System.out.println("Falscher Nutzername oder falsches Password");
+						// TODO: pw feld im Fenster leeren und eingabe visuell mit "*" ersetzen
+					}
+
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				} catch (ParseException e1) {
+					e1.printStackTrace();
 				}
 			}
 		});
