@@ -66,7 +66,7 @@ public class FirstScreen {
 		gbc_lblNewLabel.gridy = 0;
 		frmJft.getContentPane().add(lblNewLabel, gbc_lblNewLabel);
 
-		JLabel lblNewLabel_1 = new JLabel("Email");
+		JLabel lblNewLabel_1 = new JLabel("Username");
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 		gbc_lblNewLabel_1.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
@@ -103,21 +103,23 @@ public class FirstScreen {
 		JButton btnNewButton = new JButton("Login");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String email = textField.getText();
+				String username = textField.getText();
 				String password = textField_1.getText();
-				System.out.println(email + " " + password);
+				System.out.println(username + " " + password);
 
 				try {
-					if (functions.login(email, password)) { // Email durch Username ersetzen
+
+					if (functions.login(username, password)) { 
 						Frontend.Menue.main(null);
 						frmJft.dispose();
 					} else {
 						System.out.println("Falscher Nutzername oder falsches Password");
 						// TODO: pw feld im Fenster leeren und eingabe visuell mit "*" ersetzen
 					}
-
-				} catch (IOException e1) {
+				} catch (org.json.simple.parser.ParseException e1) {
 					e1.printStackTrace();
+				} catch (IOException e2) {
+					e2.printStackTrace();
 				} catch (ParseException e1) {
 					e1.printStackTrace();
 				}

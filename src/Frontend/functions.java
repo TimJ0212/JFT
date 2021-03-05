@@ -6,31 +6,48 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.text.ParseException;
 import org.json.simple.*;
-import org.json.simple.parser;
+import org.json.simple.parser.JSONParser;
 
 public class functions {
 
-    public static void registerUSer(User user) throws IOException, ParseException {
-        String filepath = "testjson.json";
-        JSONObject obj1 = new JSONObject();
-        JSONObject obj2 = new JSONObject();
+    public static void registerUSer(User user)
+            throws IOException, ParseException, org.json.simple.parser.ParseException {
+
+        Boolean valid = true;
+        String filepath = "resources\\testjson.json";
+        JSONObject key = new JSONObject();
+        JSONObject obj = new JSONObject();
         JSONObject temp = (JSONObject) readJSON(filepath);
         Object temp2 = temp.get("user");
         JSONArray arr = (JSONArray) temp2;
 
-        obj2.put("email", user.email);
-        obj2.put("password", user.password);
-        obj2.put("name", user.name);
-        obj2.put("vorname", user.vorname);
-        obj1.put(user.username, obj2);
-        arr.add(obj1);
+        for (Object current_user : arr) {
+            JSONObject username = (JSONObject) current_user;
+            if (username.containsKey(user.username.toLowerCase())) {
+                System.out.println("Benutzername bereits vergeben");
+                valid = false;
+            } else if (username.get("email").equals(user.email.toLowerCase())) {
+                System.out.println("Email Adresse bereits vergeben");
+                valid = false;
+            }
 
-        writeJSON(arr, filepath);
+        }
+        if (valid) {
+            obj.put("email", user.email.toLowerCase());
+            obj.put("password", user.password);
+            obj.put("name", user.name.toLowerCase());
+            obj.put("vorname", user.vorname.toLowerCase());
+            key.put(user.username.toLowerCase(), obj);
+            arr.add(key);
+
+            writeJSON(arr, filepath);
+        }
     }
 
-    public static Boolean login(String username, String password) throws IOException, ParseException {
+    public static Boolean login(String username, String password)
+            throws IOException, ParseException, org.json.simple.parser.ParseException {
 
-        JSONObject temp = (JSONObject) readJSON("testjson.json");
+        JSONObject temp = (JSONObject) readJSON("resources\\testjson.json");
         Object temp2 = temp.get("user");
         JSONArray arr = (JSONArray) temp2;
         for (int i = 0; i < arr.size(); i++) {
@@ -46,7 +63,8 @@ public class functions {
         return false;
     }
 
-    public static Object readJSON(String filepath) throws IOException, ParseException {
+    public static Object readJSON(String filepath)
+            throws IOException, ParseException, org.json.simple.parser.ParseException {
         File file = new File(filepath);
 
         FileReader fr = new FileReader(file);
