@@ -7,13 +7,17 @@ import java.io.IOException;
 import java.text.ParseException;
 import org.json.simple.*;
 
+public static final String filepath = "testjson.json";
+
 
 public class functions {
     public static void registerUSer(User user) throws IOException, ParseException {
         String filepath = "testjson.json"; 
         JSONObject obj1 = new JSONObject();
         JSONObject obj2 = new JSONObject();
-        JSONArray arr = (JSONArray) readJSON(filepath);
+        JSONObject temp = (JSONObject) readJSON(filepath);
+        Object temp2 = temp.get("user");
+        JSONArray arr = (JSONArray) temp2;
 
 
 
@@ -25,6 +29,7 @@ public class functions {
         arr.add(obj1);
 
         writeJSON(arr, filepath);
+    }
     }
 
     public static Boolean login(String username, String password) throws IOException, ParseException {
