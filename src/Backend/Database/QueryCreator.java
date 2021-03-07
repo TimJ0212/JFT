@@ -13,7 +13,7 @@ public class QueryCreator {
 		
 		
 		
-		return "Select * From angeboteneFahrten";
+		return "SELECT * From angeboteneFahrten";
 	}
 
 }

@@ -11,6 +11,7 @@ import Backend.Database.DataBaseConnector;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JScrollPane;
 
 public class TaxiBestellScreen {
 
@@ -19,8 +20,9 @@ public class TaxiBestellScreen {
 	private JTextField txtOrt;
 	private JTextField txtZeit;
 	private JButton searchButton;
-	private JLabel lblNewLabel_2;
 	private JButton btnNewButton_1;
+	private JScrollPane scrollPane;
+	private javax.swing.JTable jt1;
 
 	/**
 	 * Launch the application.
@@ -69,20 +71,18 @@ public class TaxiBestellScreen {
 		JLabel lblNewLabel_1 = new JLabel("Zeit der Abholung:");
 		lblNewLabel_1.setBounds(6, 38, 117, 16);
 		frmTaxiBestellen.getContentPane().add(lblNewLabel_1);
-		
+
+		String[] column= {"FahrerID","Name","PersonenAnzahl","Bewertung","Preis"};
 		searchButton = new JButton("Suche");
 		searchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String[] newArgs = {txtOrt.getSelectedText(), txtZeit.getText()};
-				DataBaseConnector.main(newArgs);
+				jt1 = new javax.swing.JTable(DataBaseConnector.connect(newArgs),column);
+				scrollPane.setViewportView(jt1);
 			}
 		});
 		searchButton.setBounds(149, 83, 81, 29);
 		frmTaxiBestellen.getContentPane().add(searchButton);
-		
-		lblNewLabel_2 = new JLabel("Hier erscheint dein Ergebnis");
-		lblNewLabel_2.setBounds(113, 179, 177, 16);
-		frmTaxiBestellen.getContentPane().add(lblNewLabel_2);
 		
 		txtZeit = new JTextField();
 		txtZeit.setBounds(131, 33, 130, 26);
@@ -92,6 +92,15 @@ public class TaxiBestellScreen {
 		btnNewButton_1 = new JButton("Fahrt nehmen");
 		btnNewButton_1.setBounds(302, 174, 130, 29);
 		frmTaxiBestellen.getContentPane().add(btnNewButton_1);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(6, 124, 272, 136);
+		frmTaxiBestellen.getContentPane().add(scrollPane);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(6, 124, 272, 136);
+		frmTaxiBestellen.getContentPane().add(scrollPane);
+			
+		scrollPane.setViewportView(jt1);
 	}
-
 }
