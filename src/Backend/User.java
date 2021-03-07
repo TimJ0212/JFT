@@ -1,4 +1,4 @@
-package Frontend;
+package Backend;
 public class User{
     String username;
     String name;
