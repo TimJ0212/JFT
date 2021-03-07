@@ -9,6 +9,8 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JButton;
 import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Menue {
 
@@ -63,6 +65,12 @@ public class Menue {
 		frmMen.getContentPane().add(lblNewLabel, gbc_lblNewLabel);
 		
 		JButton btnNewButton = new JButton("Taxi bestellen");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Frontend.TaxiBestellScreen.main(null);
+				frmMen.dispose();
+			}
+		});
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
 		gbc_btnNewButton.gridheight = 2;
 		gbc_btnNewButton.insets = new Insets(0, 0, 0, 5);
@@ -71,6 +79,12 @@ public class Menue {
 		frmMen.getContentPane().add(btnNewButton, gbc_btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Taxi bereitstellen");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Frontend.TaxiBereitstellScreen.main(null);
+				frmMen.dispose();
+			}
+		});
 		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
 		gbc_btnNewButton_1.gridheight = 2;
 		gbc_btnNewButton_1.insets = new Insets(0, 0, 0, 5);
