@@ -7,12 +7,16 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.ButtonGroup;
 
 public class TaxiBereitstellScreen {
 
 	private JFrame frmDuMchtestDein;
 	private JTextField textField;
 	private JTextField textField_1;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
 
 	/**
 	 * Launch the application.
@@ -62,10 +66,14 @@ public class TaxiBereitstellScreen {
 		textField.setColumns(10);
 		
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("1");
+		rdbtnNewRadioButton.setActionCommand("1");
+		buttonGroup.add(rdbtnNewRadioButton);
 		rdbtnNewRadioButton.setBounds(390, 27, 40, 23);
 		frmDuMchtestDein.getContentPane().add(rdbtnNewRadioButton);
 		
 		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("3");
+		rdbtnNewRadioButton_1.setActionCommand("3");
+		buttonGroup.add(rdbtnNewRadioButton_1);
 		rdbtnNewRadioButton_1.setBounds(390, 48, 40, 23);
 		frmDuMchtestDein.getContentPane().add(rdbtnNewRadioButton_1);
 		
@@ -74,6 +82,8 @@ public class TaxiBereitstellScreen {
 		frmDuMchtestDein.getContentPane().add(lblNewLabel_1);
 		
 		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("5");
+		rdbtnNewRadioButton_2.setActionCommand("5");
+		buttonGroup.add(rdbtnNewRadioButton_2);
 		rdbtnNewRadioButton_2.setBounds(390, 72, 40, 23);
 		frmDuMchtestDein.getContentPane().add(rdbtnNewRadioButton_2);
 		
@@ -81,8 +91,15 @@ public class TaxiBereitstellScreen {
 		textField_1.setBounds(16, 92, 234, 26);
 		frmDuMchtestDein.getContentPane().add(textField_1);
 		textField_1.setColumns(10);
+
+		JLabel lblNewLabel_3 = new JLabel(" €");
 		
 		JButton btnNewButton = new JButton("Verdienst berechnen");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lblNewLabel_3.setText(Backend.Hauptklasse.calculateMoney(buttonGroup.getSelection().getActionCommand())+ "€ würdest du verdienen");
+			}
+		});
 		btnNewButton.setBounds(6, 174, 192, 29);
 		frmDuMchtestDein.getContentPane().add(btnNewButton);
 		
@@ -90,7 +107,6 @@ public class TaxiBereitstellScreen {
 		btnNewButton_1.setBounds(306, 202, 108, 29);
 		frmDuMchtestDein.getContentPane().add(btnNewButton_1);
 		
-		JLabel lblNewLabel_3 = new JLabel("TODO: VerdienstOutput");
 		lblNewLabel_3.setBounds(16, 215, 182, 16);
 		frmDuMchtestDein.getContentPane().add(lblNewLabel_3);
 	}

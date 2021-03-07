@@ -7,12 +7,18 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import Backend.Database.DataBaseConnector;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 public class TaxiBestellScreen {
 
-	private JFrame frmTaxiBestellen;
+	@SuppressWarnings("exports")
+	public static JFrame frmTaxiBestellen;
 	private JTextField txtOrt;
-	private JTextField textField_1;
-	private JButton btnNewButton;
+	private JTextField txtZeit;
+	private JButton searchButton;
 	private JLabel lblNewLabel_2;
 	private JButton btnNewButton_1;
 
@@ -21,10 +27,11 @@ public class TaxiBestellScreen {
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
+			@SuppressWarnings("unused")
 			public void run() {
 				try {
 					TaxiBestellScreen window = new TaxiBestellScreen();
-					window.frmTaxiBestellen.setVisible(true);
+					TaxiBestellScreen.frmTaxiBestellen.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -63,18 +70,24 @@ public class TaxiBestellScreen {
 		lblNewLabel_1.setBounds(6, 38, 117, 16);
 		frmTaxiBestellen.getContentPane().add(lblNewLabel_1);
 		
-		btnNewButton = new JButton("Suche");
-		btnNewButton.setBounds(149, 83, 81, 29);
-		frmTaxiBestellen.getContentPane().add(btnNewButton);
+		searchButton = new JButton("Suche");
+		searchButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String[] newArgs = {txtOrt.getSelectedText(), txtZeit.getText()};
+				DataBaseConnector.main(newArgs);
+			}
+		});
+		searchButton.setBounds(149, 83, 81, 29);
+		frmTaxiBestellen.getContentPane().add(searchButton);
 		
 		lblNewLabel_2 = new JLabel("Hier erscheint dein Ergebnis");
 		lblNewLabel_2.setBounds(113, 179, 177, 16);
 		frmTaxiBestellen.getContentPane().add(lblNewLabel_2);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(131, 33, 130, 26);
-		frmTaxiBestellen.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+		txtZeit = new JTextField();
+		txtZeit.setBounds(131, 33, 130, 26);
+		frmTaxiBestellen.getContentPane().add(txtZeit);
+		txtZeit.setColumns(10);
 		
 		btnNewButton_1 = new JButton("Fahrt nehmen");
 		btnNewButton_1.setBounds(302, 174, 130, 29);

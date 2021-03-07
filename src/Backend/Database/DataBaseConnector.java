@@ -25,8 +25,7 @@ public class DataBaseConnector {
 			// STEP 4: Abfrage ausführen
 			System.out.println("Erstelle Abfrage...\n");
 			stmt = conn.createStatement();
-			String sql;
-			sql = "SELECT * FROM Fahrt";
+			String sql = QueryCreator.getSQL(args);
 			ResultSet rs = stmt.executeQuery(sql);
 
 			// STEP 5: Einzelne Ergebnisse aus dem Ergebnis Set holen
