@@ -11,7 +11,13 @@ public class DataBaseConnector {
 	static final String USER = "k146691_tim";
 	static final String PASS = "0Jmpn2#2";
 
-	public static String[][] connect(String[] args) {
+	/**
+	 * Führt die Query aus.
+	 * @param args
+	 * @param trSEfaIN true≙Select; false ≙ Insert
+	 * @return
+	 */
+	public static String[][] connect(String[] args, boolean trSEfaIN) {
 
 		String[][] data = new String[4][5]; // [rows][columns]
 		Connection conn = null;
@@ -27,34 +33,23 @@ public class DataBaseConnector {
 			// STEP 4: Abfrage ausführen
 			System.out.println("Erstelle Abfrage...\n");
 			stmt = conn.createStatement();
-			String sql = QueryCreator.getSQL(args);
-			ResultSet rs = stmt.executeQuery(sql);
-
-			// STEP 5: Einzelne Ergebnisse aus dem Ergebnis Set holen
-			int i = 0;
-			while (rs.next()) {
-				for (int j = 0; j < 5; j++) {
-					data[i][j] = rs.getString(j + 1);
+			ResultSet rs;
+			if (trSEfaIN) {
+				rs = stmt.executeQuery(QueryCreator.getSelectSQL(args));
+				// STEP 5: Einzelne Ergebnisse aus dem Ergebnis Set holen
+				int i = 0;
+				while (rs.next()) {
+					for (int j = 0; j < 5; j++) {
+						data[i][j] = rs.getString(j + 1);
+					}
+					i = i + 1;
 				}
-				i = i + 1;
+				rs.close();
+			} else {
+				stmt.executeUpdate(QueryCreator.getInsertSQL(args));
 			}
-//			while (rs.next()) {
-//				// Nach Spalte
-//				int FahrtID = rs.getInt("FahrtID");
-//				int StartID = rs.getInt("StartID");
-//				int ZielID = rs.getInt("ZielID");
-//				int FahrerID = rs.getInt("FahrerID");
-//				int FahrgastID = rs.getInt("FahrgastID");
-//
-//				// Werte Ausgabe
-//				System.out.print("FahrtID: " + FahrtID);
-//				System.out.print(", StartID: " + StartID);
-//				System.out.print(", First: " + ZielID);
-//				System.out.print(", ZielID: " + FahrerID);
-//				System.out.println(", FahrgastID: " + FahrgastID);
-//			}
+
 			// STEP 6: Lecks schließen
-			rs.close();
 			stmt.close();
 			conn.close();
 		} catch (SQLException se) {

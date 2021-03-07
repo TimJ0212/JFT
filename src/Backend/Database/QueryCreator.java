@@ -4,16 +4,18 @@ import Frontend.TaxiBestellScreen;
 
 public class QueryCreator {
 
-	public static String getSQL(String[] args) {
+	public static String getSelectSQL(String[] args) {
 		
 		if(TaxiBestellScreen.frmTaxiBestellen.isActive()) {
 			System.out.println(args[0]);
 			System.out.println(args[1]);
 		}
+		return "SELECT * FROM angeboteneFahrten";
+	}
+	
+	public static String getInsertSQL(String[] args) {
 		
-		
-		
-		return "SELECT * From angeboteneFahrten";
+		return "INSERT INTO angeboteneFahrten (Ort, Zeit, PersonenAnzahl) VALUES ("+args[0]+", "+args[1]+", "+args[2]+")";
 	}
 
 }
