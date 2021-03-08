@@ -10,11 +10,13 @@ public class functions {
     }
 
     public static Boolean login(String username, String password) {
+
         return false;
     }
 
-    public static Boolean valInResultset(ResultSet rs, String val) {
-
+    public static Boolean valInResultset(ResultSet rs, String val) throws SQLException {
+        if (!rs.next())
+            return true;
         return false;
     }
 
