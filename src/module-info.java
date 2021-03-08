@@ -1,8 +1,9 @@
 module JFT {
 	exports Backend;
+	exports Backend.Database;
 	exports Frontend;
 
-	requires java.sql;
 	requires java.desktop;
+	requires java.sql;
 	requires json.simple;
 }

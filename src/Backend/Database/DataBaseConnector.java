@@ -17,16 +17,16 @@ public class DataBaseConnector {
 	 * @param trSEfaIN true≙Select; false ≙ Insert
 	 * @return
 	 */
-	public static String[][] connect(String[] args, boolean trSEfaIN) {
+	public static ResultSet connect(String[] args, boolean trSEfaIN) {
 
 		String[][] data = new String[4][5]; // [rows][columns]
 		Connection conn = null;
 		Statement stmt = null;
 		try {
 			// STEP 2: JDBC Treiber registrieren.
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			Class.forName("com.mysql.jdbc.Driver"); //Falls es nicht klappt durch: "com.mysql.cj.jdbc.Driver" ersetzen.
 
-			// STEP 3: Verbindung öffnen
+			// STEP 3: Verbindung �ffnen
 			System.out.println("Verbindung zur database...");
 			conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
@@ -36,15 +36,7 @@ public class DataBaseConnector {
 			ResultSet rs;
 			if (trSEfaIN) {
 				rs = stmt.executeQuery(QueryCreator.getSelectSQL(args));
-				// STEP 5: Einzelne Ergebnisse aus dem Ergebnis Set holen
-				int i = 0;
-				while (rs.next()) {
-					for (int j = 0; j < 5; j++) {
-						data[i][j] = rs.getString(j + 1);
-					}
-					i = i + 1;
-				}
-				rs.close();
+				return rs;
 			} else {
 				stmt.executeUpdate(QueryCreator.getInsertSQL(args));
 			}
@@ -73,8 +65,8 @@ public class DataBaseConnector {
 			} // end finally try
 		} // end try
 		System.out.println("\nEnde!");
+		return null;
 
-		return data;
 	}// end main
 
 }// end FirstExample
