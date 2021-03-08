@@ -84,26 +84,18 @@ public class LoginScreen {
 				String password = textField_1.getText();
 				System.out.println(username + " " + password);
 
-				try {
-
-					if (functions.login(username, password)) { 
-						Frontend.Menue.main(null);
-						frmJft.dispose();
-					} else {
-						System.out.println("Falscher Nutzername oder falsches Password");
-						// TODO: pw feld im Fenster leeren und eingabe visuell mit "*" ersetzen
-					}
-				} catch (org.json.simple.parser.ParseException e1) {
-					e1.printStackTrace();
-				} catch (IOException e2) {
-					e2.printStackTrace();
-				} catch (ParseException e1) {
-					e1.printStackTrace();
+				if (functions.login(username, password)) {
+					Frontend.Menue.main(null);
+					frmJft.dispose();
+				} else {
+					System.out.println("Falscher Nutzername oder falsches Password");
+					// TODO: pw feld im Fenster leeren und eingabe visuell mit "*" ersetzen
 				}
+
 			}
 		});
 		frmJft.getContentPane().add(btnNewButton);
-		
+
 		JButton btnNewButton_1 = new JButton("Debug");
 		btnNewButton_1.setBounds(359, 218, 85, 48);
 		btnNewButton_1.addActionListener(new ActionListener() {
