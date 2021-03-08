@@ -77,7 +77,7 @@ public class TaxiBestellScreen {
 		searchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String[] newArgs = {txtOrt.getSelectedText(), txtZeit.getText()};
-				//jt1 = new javax.swing.JTable(DataBaseConnector.(newArgs, true),column); //RST
+				jt1 = new javax.swing.JTable(Backend.ResultSetTranslator(Backend.Database.DataBaseConnector(newArgs, true),column); //TODO: RST
 				scrollPane.setViewportView(jt1);
 			}
 		});
