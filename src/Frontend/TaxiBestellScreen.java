@@ -102,5 +102,15 @@ public class TaxiBestellScreen {
 		frmTaxiBestellen.getContentPane().add(scrollPane);
 			
 		scrollPane.setViewportView(jt1);
+		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Frontend.Menue.main(null);
+				frmTaxiBestellen.dispose();
+			}
+		});
+		btnNewButton.setBounds(399, 5, 45, 29);
+		frmTaxiBestellen.getContentPane().add(btnNewButton);
 	}
 }

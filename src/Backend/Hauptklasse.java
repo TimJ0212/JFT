@@ -5,9 +5,5 @@ public class Hauptklasse {
 	
 		Frontend.LoginScreen.main(args);
 	}
-	public static String calculateMoney(String personen){
-		
-		return String.valueOf(Integer.valueOf(personen)*10);
-		
-	}
+	
 }

@@ -24,7 +24,7 @@ public class DBCOutResSet {
 		Statement stmt = null;
 		try {
 			// STEP 2: JDBC Treiber registrieren.
-			Class.forName("com.mysql.jdbc.Driver"); //Falls es nicht klappt durch: "com.mysql.cj.jdbc.Driver" ersetzen.
+			Class.forName("com.mysql.cj.jdbc.Driver"); //Falls es nicht klappt durch: "com.mysql.(cj).jdbc.Driver" ersetzen. Entweder mit ohner ohne cj
 
 			// STEP 3: Verbindung �ffnen
 			System.out.println("Verbindung zur database...");

@@ -25,7 +25,7 @@ public class DBCOutStAr {
 		Statement stmt = null;
 		try {
 			// STEP 2: JDBC Treiber registrieren.
-			Class.forName("com.mysql.jdbc.Driver"); // Falls es nicht klappt durch: "com.mysql.cj.jdbc.Driver" ersetzen.
+			Class.forName("com.mysql.cj.jdbc.Driver"); // Falls es nicht klappt durch: "com.mysql.cj.jdbc.Driver" ersetzen.
 
 			// STEP 3: Verbindung �ffnen
 			System.out.println("Verbindung zur database...");
