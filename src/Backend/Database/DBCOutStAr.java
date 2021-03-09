@@ -25,7 +25,8 @@ public class DBCOutStAr {
 		Statement stmt = null;
 		try {
 			// STEP 2: JDBC Treiber registrieren.
-			Class.forName("com.mysql.cj.jdbc.Driver"); // Falls es nicht klappt durch: "com.mysql.cj.jdbc.Driver" ersetzen.
+			Class.forName("com.mysql.cj.jdbc.Driver"); // Falls es nicht klappt durch: "com.mysql.cj.jdbc.Driver"
+														// ersetzen.
 
 			// STEP 3: Verbindung �ffnen
 			System.out.println("Verbindung zur database...");
@@ -37,20 +38,20 @@ public class DBCOutStAr {
 			ResultSet rs = null;
 			if (trSEfaIN) {
 				rs = stmt.executeQuery(QueryCreator.getSelectSQL(args));
+				// STEP 5: Einzelne Ergebnisse aus dem Ergebnis Set holen
+				int i = 0;
+				try {
+					while (rs.next()) {
+						for (int j = 0; j < 5; j++) {
+							data[i][j] = rs.getString(j + 1);
+						}
+						i = i + 1;
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			} else {
 				stmt.executeUpdate(QueryCreator.getInsertSQL(args));
-			}
-			// STEP 5: Einzelne Ergebnisse aus dem Ergebnis Set holen
-			int i = 0;
-			try {
-				while (rs.next()) {
-					for (int j = 0; j < 5; j++) {
-						data[i][j] = rs.getString(j + 1);
-					}
-					i = i + 1;
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
 			}
 
 			// STEP 6: Lecks schließen
