@@ -15,7 +15,7 @@ public class QueryCreator {
 	
 	public static String getInsertSQL(String[] args) {
 		
-		return "INSERT INTO angeboteneFahrten (Ort, Zeit, PersonenAnzahl) VALUES ("+args[0]+", "+args[1]+", "+args[2]+")";
+		return "INSERT INTO angeboteneFahrten (Ort, Zeit, PersonenAnzahl) VALUES (" + "\""+  args[0] + "\"" + ", "+args[1]+", "+args[2]+")";
 	}
 
 }
