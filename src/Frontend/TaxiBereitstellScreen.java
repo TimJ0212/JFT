@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import Backend.Database.DBCOutStAr;
+import Backend.Database.DBCOutputStringArray;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -90,7 +90,7 @@ public class TaxiBereitstellScreen {
 			public void actionPerformed(ActionEvent e) {
 				String[] data = { comboBox.getSelectedItem().toString(), timeField.getText(),
 						textField.getText() };
-				DBCOutStAr.connect(data, false);
+				DBCOutputStringArray.connect(data, false);
 			}
 		});
 		btnNewButton_1.setBounds(306, 202, 108, 29);

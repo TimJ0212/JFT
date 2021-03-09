@@ -7,7 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import Backend.Database.DBCOutStAr;
+import Backend.JTableFormatter;
+import Backend.Database.DBCOutputStringArray;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -75,7 +76,7 @@ public class TaxiBestellScreen {
 		searchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String[] newArgs = {comboBox.getSelectedItem().toString(), txtZeit.getText()};
-				jt1 = new javax.swing.JTable(DBCOutStAr.connect(newArgs, true),column); //TODO: RST
+				jt1 = new javax.swing.JTable(JTableFormatter.format(DBCOutputStringArray.connect(newArgs, true)),column); //TODO: RST
 				scrollPane.setViewportView(jt1);
 			}
 		});

@@ -2,7 +2,7 @@ package Backend.Database;
 
 import java.sql.*;
 
-public class DBCOutStAr {
+public class DBCOutputStringArray {
 	// JDBC driver name and database URL
 	static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
 	static final String DB_URL = "jdbc:mysql://91.204.46.44/k146691_test?autoReconnect=true&useSSL=false";
