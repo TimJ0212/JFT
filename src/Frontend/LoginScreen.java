@@ -10,8 +10,6 @@ import Backend.functions;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.text.ParseException;
 import java.awt.event.ActionEvent;
 
 public class LoginScreen {

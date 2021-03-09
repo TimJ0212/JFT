@@ -8,7 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-import Backend.Database.DataBaseConnector;
+import Backend.Database.DBCOutStAr;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -112,7 +112,7 @@ public class TaxiBereitstellScreen {
 			public void actionPerformed(ActionEvent e) {
 				String[] data = { placeField.getText(), timeFIeld.getText(),
 						buttonGroup.getSelection().getActionCommand() };
-				DataBaseConnector.connect(data, false);
+				DBCOutStAr.connect(data, false);
 			}
 		});
 		btnNewButton_1.setBounds(306, 202, 108, 29);

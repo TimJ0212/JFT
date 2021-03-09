@@ -14,7 +14,7 @@ public class functions {
         return false;
     }
 
-    public static Boolean valInResultset(ResultSet rs, String val) throws SQLException {
+    public static Boolean valInResultset(@SuppressWarnings("exports") ResultSet rs, String val) throws SQLException {
         if (!rs.next())
             return true;
         return false;
