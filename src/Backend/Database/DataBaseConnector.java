@@ -42,7 +42,7 @@ public class DataBaseConnector {
 			}
 
 			// STEP 6: Lecks schließen
-			
+			stmt.close();
 			conn.close();
 		} catch (SQLException se) {
 			// Fehlerhandling

@@ -12,7 +12,6 @@ public class ResultSetTranslator {
 	 * @return
 	 * @throws SQLException
 	 */
-	@SuppressWarnings("exports")
 	public static String[][] RST(ResultSet rs) {
 
 		String[][] data = new String[4][5];
