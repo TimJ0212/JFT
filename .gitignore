@@ -1,6 +1,17 @@
-
+/bin/Backend
+/bin/Frontend
 .vscode/settings.json
+<<<<<<< Updated upstream
 bin/.vscode/settings.json
 .project
 .DS_Store
 /bin/
+=======
+/bin/
+.DS_Store
+src/.DS_Store
+src/.DS_Store
+>>>>>>> Stashed changes
+src/.DS_Store
+src/.DS_Store~Stashed changes
+src/.DS_Store
