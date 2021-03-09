@@ -2,3 +2,5 @@
 .vscode/settings.json
 bin/.vscode/settings.json
 .project
+.DS_Store
+/bin/

@@ -26,7 +26,7 @@ public class DataBaseConnector {
 			// STEP 2: JDBC Treiber registrieren.
 			Class.forName("com.mysql.jdbc.Driver"); //Falls es nicht klappt durch: "com.mysql.cj.jdbc.Driver" ersetzen.
 
-			// STEP 3: Verbindung öffnen
+			// STEP 3: Verbindung ï¿½ffnen
 			System.out.println("Verbindung zur database...");
 			conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
@@ -42,7 +42,7 @@ public class DataBaseConnector {
 			}
 
 			// STEP 6: Lecks schlieÃŸen
-			stmt.close();
+			
 			conn.close();
 		} catch (SQLException se) {
 			// Fehlerhandling
