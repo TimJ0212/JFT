@@ -11,11 +11,12 @@ import Backend.Database.DBCOutStAr;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class TaxiBereitstellScreen {
 
 	private JFrame frmDuMchtestDein;
-	private JTextField placeField;
 	private JTextField timeField;
 	private JTextField textField;
 
@@ -61,11 +62,6 @@ public class TaxiBereitstellScreen {
 		lblNewLabel_2.setBounds(306, 64, 121, 16);
 		frmDuMchtestDein.getContentPane().add(lblNewLabel_2);
 
-		placeField = new JTextField();
-		placeField.setBounds(16, 26, 234, 26);
-		frmDuMchtestDein.getContentPane().add(placeField);
-		placeField.setColumns(10);
-
 		JLabel lblNewLabel_1 = new JLabel("Wann hast du Zeit? (hh:mm-hh:mm)");
 		lblNewLabel_1.setBounds(16, 64, 245, 16);
 		frmDuMchtestDein.getContentPane().add(lblNewLabel_1);
@@ -87,10 +83,12 @@ public class TaxiBereitstellScreen {
 		btnNewButton.setBounds(6, 174, 192, 29);
 		frmDuMchtestDein.getContentPane().add(btnNewButton);
 
+		JComboBox<String> comboBox = new JComboBox<String>();
+
 		JButton btnNewButton_1 = new JButton("Los geht's");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String[] data = { placeField.getText(), timeField.getText(),
+				String[] data = { comboBox.getSelectedItem().toString(), timeField.getText(),
 						textField.getText() };
 				DBCOutStAr.connect(data, false);
 			}
@@ -115,5 +113,9 @@ public class TaxiBereitstellScreen {
 		});
 		btnNewButton_2.setBounds(393, 23, 43, 29);
 		frmDuMchtestDein.getContentPane().add(btnNewButton_2);
+		
+		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"Hauptbahnhof", "Schule", "Leine-Center"}));
+		comboBox.setBounds(16, 25, 234, 27);
+		frmDuMchtestDein.getContentPane().add(comboBox);
 	}
 }

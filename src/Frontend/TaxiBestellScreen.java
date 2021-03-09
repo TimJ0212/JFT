@@ -12,17 +12,19 @@ import Backend.Database.DBCOutStAr;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class TaxiBestellScreen {
 
 	@SuppressWarnings("exports")
 	public static JFrame frmTaxiBestellen;
-	private JTextField txtOrt;
 	private JTextField txtZeit;
 	private JButton searchButton;
 	private JButton btnNewButton_1;
 	private JScrollPane scrollPane;
 	private javax.swing.JTable jt1;
+	private JComboBox<?> comboBox;
 
 	/**
 	 * Launch the application.
@@ -51,6 +53,7 @@ public class TaxiBestellScreen {
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void initialize() {
 		frmTaxiBestellen = new JFrame();
 		frmTaxiBestellen.setTitle("Taxi bestellen");
@@ -62,21 +65,16 @@ public class TaxiBestellScreen {
 		lblNewLabel.setBounds(6, 10, 113, 16);
 		frmTaxiBestellen.getContentPane().add(lblNewLabel);
 		
-		txtOrt = new JTextField();
-		txtOrt.setBounds(131, 5, 130, 26);
-		lblNewLabel.setLabelFor(txtOrt);
-		frmTaxiBestellen.getContentPane().add(txtOrt);
-		txtOrt .setColumns(10);
-		
 		JLabel lblNewLabel_1 = new JLabel("Zeit der Abholung:");
 		lblNewLabel_1.setBounds(6, 38, 117, 16);
 		frmTaxiBestellen.getContentPane().add(lblNewLabel_1);
 
+		comboBox = new JComboBox<String>();
 		String[] column= {"FahrerID","Name","PersonenAnzahl","Bewertung","Preis"};
 		searchButton = new JButton("Suche");
 		searchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String[] newArgs = {txtOrt.getSelectedText(), txtZeit.getText()};
+				String[] newArgs = {comboBox.getSelectedItem().toString(), txtZeit.getText()};
 				jt1 = new javax.swing.JTable(DBCOutStAr.connect(newArgs, true),column); //TODO: RST
 				scrollPane.setViewportView(jt1);
 			}
@@ -112,5 +110,9 @@ public class TaxiBestellScreen {
 		});
 		btnNewButton.setBounds(399, 5, 45, 29);
 		frmTaxiBestellen.getContentPane().add(btnNewButton);
+		
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Hauptbahnhof", "Schule", "Leine-Center"}));
+		comboBox.setBounds(131, 6, 130, 27);
+		frmTaxiBestellen.getContentPane().add(comboBox);
 	}
 }
