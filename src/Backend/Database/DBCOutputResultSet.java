@@ -87,7 +87,8 @@ public class DBCOutputResultSet {
 		System.out.println("Erstelle Abfrage...\n");
 		stmt = conn.createStatement();
 
-		stmt.execute(functions.registerUserSQL(user, driver));
+		stmt.executeUpdate(functions.registerUserSQL(user));
+		System.out.println("Schließe Verbindung");
 		return null;
 	}
 
