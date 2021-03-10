@@ -10,6 +10,7 @@ import Backend.functions;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class LoginScreen {
@@ -82,12 +83,20 @@ public class LoginScreen {
 				String password = textField_1.getText();
 				System.out.println(username + " " + password);
 
-				if (functions.login(username, password)) {
-					Frontend.Menue.main(null);
-					frmJft.dispose();
-				} else {
-					System.out.println("Falscher Nutzername oder falsches Password");
-					// TODO: pw feld im Fenster leeren und eingabe visuell mit "*" ersetzen
+				try {
+					if (functions.login(username, password)) {
+						Frontend.Menue.main(null);
+						frmJft.dispose();
+					} else {
+						System.out.println("Falscher Nutzername oder falsches Password");
+						// TODO: pw feld im Fenster leeren und eingabe visuell mit "*" ersetzen
+					}
+				} catch (ClassNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
 
 			}

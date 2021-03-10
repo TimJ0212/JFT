@@ -90,7 +90,7 @@ public class DBCOutputResultSet {
 		return null;
 	}
 
-	public static Boolean loginDB(String username, String password) throws ClassNotFoundException, SQLException {
+	public static ResultSet loginDB(String username) throws ClassNotFoundException, SQLException {
 		Connection conn = null;
 		Statement stmt = null;
 
@@ -102,8 +102,9 @@ public class DBCOutputResultSet {
 		System.out.println("Erstelle Abfrage...\n");
 		stmt = conn.createStatement();
 
-		stmt.executeQuery();
-		return null;
+		ResultSet rs = stmt.executeQuery(functions.getUserInf(username));
+
+		return rs;
 	}
 
 }// end FirstExample
