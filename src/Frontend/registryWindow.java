@@ -1,24 +1,20 @@
 package Frontend;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
-import javax.swing.JFrame;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
-import javax.swing.JTextField;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
-import javax.swing.AbstractAction;
-import java.awt.event.ActionEvent;
-import javax.swing.Action;
-import javax.swing.ButtonGroup;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import Backend.User;
-import Backend.functions;
 import Backend.Database.DBCOutputResultSet;
-
-import java.awt.event.ActionListener;
-import java.sql.SQLException;
 
 public class registryWindow {
 
@@ -61,7 +57,13 @@ public class registryWindow {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		JButton btnNewButton = new JButton("New button");
+		JButton btnNewButton = new JButton("...");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				Frontend.LoginScreen.main(null);
+			}
+		});
 		btnNewButton.setBounds(376, 11, 48, 23);
 		frame.getContentPane().add(btnNewButton);
 
@@ -138,8 +140,5 @@ public class registryWindow {
 		frame.getContentPane().add(nameBox);
 		nameBox.setColumns(10);
 
-	}
-
-	public void actionPerformed(ActionEvent e) {
 	}
 }

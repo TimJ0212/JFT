@@ -74,7 +74,8 @@ public class DBCOutputResultSet {
 
 	}// end main
 
-	public static ResultSet registerUserToDB(User user, Boolean driver) throws ClassNotFoundException, SQLException {
+	@SuppressWarnings("exports")
+	public static ResultSet registerUserToDB(User user) throws ClassNotFoundException, SQLException {
 		Connection conn = null;
 		Statement stmt = null;
 
@@ -90,6 +91,7 @@ public class DBCOutputResultSet {
 		return null;
 	}
 
+	@SuppressWarnings("exports")
 	public static ResultSet loginDB(String username) throws ClassNotFoundException, SQLException {
 		Connection conn = null;
 		Statement stmt = null;
