@@ -9,6 +9,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -105,7 +106,7 @@ public class registryWindow {
 		btnNewButton_1.setBounds(112, 157, 105, 23);
 		frame.getContentPane().add(btnNewButton_1);
 
-		pwBox = new JTextField();
+		pwBox = new JPasswordField();
 		pwBox.setBounds(112, 95, 150, 20);
 		frame.getContentPane().add(pwBox);
 		pwBox.setColumns(10);
