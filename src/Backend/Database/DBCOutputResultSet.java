@@ -2,6 +2,9 @@ package Backend.Database;
 
 import java.sql.*;
 
+import Backend.User;
+import Backend.functions;
+
 public class DBCOutputResultSet {
 	// JDBC driver name and database URL
 	static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
@@ -13,6 +16,7 @@ public class DBCOutputResultSet {
 
 	/**
 	 * Führt die Query aus.
+	 * 
 	 * @param args
 	 * @param trSEfaIN true≙Select; false ≙ Insert
 	 * @return
@@ -24,7 +28,8 @@ public class DBCOutputResultSet {
 		Statement stmt = null;
 		try {
 			// STEP 2: JDBC Treiber registrieren.
-			Class.forName("com.mysql.cj.jdbc.Driver"); //Falls es nicht klappt durch: "com.mysql.(cj).jdbc.Driver" ersetzen. Entweder mit ohner ohne cj
+			Class.forName("com.mysql.cj.jdbc.Driver"); // Falls es nicht klappt durch: "com.mysql.(cj).jdbc.Driver"
+														// ersetzen. Entweder mit ohner ohne cj
 
 			// STEP 3: Verbindung �ffnen
 			System.out.println("Verbindung zur database...");
@@ -68,5 +73,37 @@ public class DBCOutputResultSet {
 		return null;
 
 	}// end main
+
+	public static ResultSet registerUserDB(User user) throws ClassNotFoundException, SQLException {
+		Connection conn = null;
+		Statement stmt = null;
+
+		Class.forName("com.mysql.cj.jdbc.Driver");
+
+		System.out.println("Verbindung zur database...");
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+		System.out.println("Erstelle Abfrage...\n");
+		stmt = conn.createStatement();
+
+		stmt.executeUpdate(functions.registerUserSQL(user));
+		return null;
+	}
+
+	public static Boolean loginDB(String username, String password) throws ClassNotFoundException, SQLException {
+		Connection conn = null;
+		Statement stmt = null;
+
+		Class.forName("com.mysql.cj.jdbc.Driver");
+
+		System.out.println("Verbindung zur database...");
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+		System.out.println("Erstelle Abfrage...\n");
+		stmt = conn.createStatement();
+
+		stmt.executeQuery();
+		return null;
+	}
 
 }// end FirstExample
