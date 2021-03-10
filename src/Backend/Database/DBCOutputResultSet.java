@@ -74,7 +74,7 @@ public class DBCOutputResultSet {
 
 	}// end main
 
-	public static ResultSet registerUserDB(User user) throws ClassNotFoundException, SQLException {
+	public static ResultSet registerUserToDB(User user) throws ClassNotFoundException, SQLException {
 		Connection conn = null;
 		Statement stmt = null;
 

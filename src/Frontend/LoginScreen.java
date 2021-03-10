@@ -117,7 +117,7 @@ public class LoginScreen {
 		btnNewButton_2.setBounds(0, 218, 85, 48);
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Frontend.Menue.main(null);
+				Frontend.registryWindow.main(null);
 				frmJft.dispose();
 			}
 		});

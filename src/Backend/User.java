@@ -9,14 +9,14 @@ public class User {
     /**
      * 
      * @param un username
-     * @param n name
+     * @param n  name
      * @param em email
      * @param pw passwort
      */
     public User(String un, String n, String em, String pw) {
-        this.username = un;
+        this.username = un.toLowerCase();
         this.name = n;
-        this.email = em;
+        this.email = em.toLowerCase();
         this.password = pw;
     }
 }
