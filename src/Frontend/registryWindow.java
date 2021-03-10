@@ -14,6 +14,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import Backend.Hauptklasse;
 import Backend.User;
 import Backend.Database.DBCOutputResultSet;
 
@@ -93,6 +94,7 @@ public class registryWindow {
 			public void actionPerformed(ActionEvent e) {
 				User user = new User(usernameBox.getText(), nameBox.getText(), emBox.getText(), pwBox.getText());
 				try {
+					Hauptklasse.loggedUser = user;
 					DBCOutputResultSet.registerUserToDB(user);
 				} catch (ClassNotFoundException e1) {
 					// TODO Auto-generated catch block

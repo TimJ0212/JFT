@@ -9,6 +9,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import Backend.Hauptklasse;
+import javax.swing.SwingConstants;
+
 public class Menue {
 
 	private JFrame frmMen;
@@ -42,16 +45,21 @@ public class Menue {
 	private void initialize() {
 		frmMen = new JFrame();
 		frmMen.setTitle("Menü");
-		frmMen.getContentPane().setBackground(new java.awt.Color(224,229,225));
+		frmMen.getContentPane().setBackground(new java.awt.Color(224, 229, 225));
 		frmMen.setBackground(new Color(250, 235, 215));
 		frmMen.setBounds(100, 100, 450, 300);
 		frmMen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMen.getContentPane().setLayout(null);
-		
-		JLabel lblNewLabel = new JLabel("Wilkommen bei JFT-Taxi");
-		lblNewLabel.setBounds(135, 19, 155, 16);
+
+		String welcomeMessage = Hauptklasse.loggedUser.getUsername() == null
+				? "Wilkommen bei JFT-Taxi unbekannter Nutzer"
+				: "Wilkommen bei JFT-Taxi " + Hauptklasse.loggedUser.getUsername();
+		JLabel lblNewLabel = new JLabel(welcomeMessage);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+		lblNewLabel.setBounds(40, 19, 353, 16);
 		frmMen.getContentPane().add(lblNewLabel);
-		
+
 		JButton btnNewButton = new JButton("Taxi bestellen");
 		btnNewButton.setBounds(230, 108, 163, 54);
 		btnNewButton.addActionListener(new ActionListener() {
@@ -61,7 +69,7 @@ public class Menue {
 			}
 		});
 		frmMen.getContentPane().add(btnNewButton);
-		
+
 		JButton btnNewButton_1 = new JButton("Taxi bereitstellen");
 		btnNewButton_1.setBounds(40, 108, 163, 54);
 		btnNewButton_1.addActionListener(new ActionListener() {

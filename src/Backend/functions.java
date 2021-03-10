@@ -15,13 +15,14 @@ public class functions {
 		ResultSet rs = DBCOutputResultSet.loginDB(username);
 		while (rs.next()) {
 			if (password == rs.getString(1))
+				Hauptklasse.loggedUser = new User(username, password, null, null);
 				return true;
 		}
 		return false;
 	}
 
 	public static String getUserInf(String username) {
-		return ("SELECT * FROM 'User' WHERE Username='" + username + "'");
+		return ("SELECT * FROM 'Benutzer' WHERE Username='" + username + "'");
 	}
 
 	public static Boolean valInResultset(@SuppressWarnings("exports") ResultSet rs, String val) throws SQLException {
