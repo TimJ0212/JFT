@@ -61,7 +61,7 @@ public class registryWindow {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				Frontend.Menue.main(null);
+				Frontend.LoginScreen.main(null);
 			}
 		});
 		btnNewButton.setBounds(376, 11, 48, 23);

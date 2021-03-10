@@ -7,8 +7,8 @@ import Backend.Database.DBCOutputResultSet;
 public class functions {
 
 	public static String registerUserSQL(User user) {
-		return ("INSERT INTO 'User' ('Username', 'Passwort', 'EMail', 'Name') VALUES ('" + user.username + "', '"
-				+ user.password + "', '" + user.email + "', '" + user.name + "');");
+		return "INSERT INTO `Benutzer`(`Username`, `Password`, `EMail`, `Name`, `Fahrer`) VALUES ('t435345345345345im','tim','tim','tim',1)";
+			//("INSERT INTO Benutzer ('Username', 'Passwort', 'EMail', 'Name') VALUES ('" + user.username + "', '"+ user.password + "', '" + user.email + "', '" + user.name + "');");
 	}
 
 	public static Boolean login(String username, String password) throws SQLException, ClassNotFoundException {
