@@ -6,9 +6,9 @@ import Backend.Database.DBCOutputResultSet;
 
 public class functions {
 
-	public static String registerUserSQL(User user) {
-		return ("INSERT INTO 'User' ('Username', 'Passwort', 'EMail', 'Name') VALUES ('" + user.username + "', '"
-				+ user.password + "', '" + user.email + "', '" + user.name + "');");
+	public static String registerUserSQL(User user, Boolean driver) {
+		return ("INSERT INTO `User` (`Username`, `Password`, `EMail`, `Name`, `Fahrer`) VALUES ('" + user.username
+				+ "', '" + user.password + "', '" + user.email + "', '" + user.name + "'" + driver + "');");
 	}
 
 	public static Boolean login(String username, String password) throws SQLException, ClassNotFoundException {

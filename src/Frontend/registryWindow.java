@@ -85,12 +85,23 @@ public class registryWindow {
 		lblNewLabel_1.setBounds(10, 67, 92, 14);
 		frame.getContentPane().add(lblNewLabel_1);
 
+		JRadioButton rdbtnNewRadioButton = new JRadioButton("Fahrer");
+		buttonGroup.add(rdbtnNewRadioButton);
+		rdbtnNewRadioButton.setBounds(290, 63, 109, 23);
+		frame.getContentPane().add(rdbtnNewRadioButton);
+
 		JButton btnNewButton_1 = new JButton("Registrieren");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				User user = new User(usernameBox.getText(), nameBox.getText(), emBox.getText(), pwBox.getText());
+				Boolean driver;
+				if (rdbtnNewRadioButton.hasFocus())
+					driver = true;
+				else
+					driver = false;
 				try {
-					DBCOutputResultSet.registerUserToDB(user);
+					DBCOutputResultSet.registerUserToDB(user, driver);
+					System.out.println("Nutzer Registriert...");
 				} catch (ClassNotFoundException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -100,6 +111,20 @@ public class registryWindow {
 				}
 			}
 		});
+		JLabel lblNewLabel_2 = new JLabel("Password");
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel_2.setBounds(10, 98, 92, 14);
+		frame.getContentPane().add(lblNewLabel_2);
+
+		JLabel lblNewLabel_3 = new JLabel("Name");
+		lblNewLabel_3.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel_3.setBounds(10, 129, 92, 14);
+		frame.getContentPane().add(lblNewLabel_3);
+
+		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Fahrgast");
+		buttonGroup.add(rdbtnNewRadioButton_1);
+		rdbtnNewRadioButton_1.setBounds(290, 94, 109, 23);
+		frame.getContentPane().add(rdbtnNewRadioButton_1);
 		btnNewButton_1.setBounds(112, 157, 105, 23);
 		frame.getContentPane().add(btnNewButton_1);
 
@@ -113,25 +138,6 @@ public class registryWindow {
 		frame.getContentPane().add(nameBox);
 		nameBox.setColumns(10);
 
-		JLabel lblNewLabel_2 = new JLabel("Password");
-		lblNewLabel_2.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_2.setBounds(10, 98, 92, 14);
-		frame.getContentPane().add(lblNewLabel_2);
-
-		JLabel lblNewLabel_3 = new JLabel("Name");
-		lblNewLabel_3.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_3.setBounds(10, 129, 92, 14);
-		frame.getContentPane().add(lblNewLabel_3);
-
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("Fahrer");
-		buttonGroup.add(rdbtnNewRadioButton);
-		rdbtnNewRadioButton.setBounds(290, 63, 109, 23);
-		frame.getContentPane().add(rdbtnNewRadioButton);
-
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Fahrgast");
-		buttonGroup.add(rdbtnNewRadioButton_1);
-		rdbtnNewRadioButton_1.setBounds(290, 94, 109, 23);
-		frame.getContentPane().add(rdbtnNewRadioButton_1);
 	}
 
 	public void actionPerformed(ActionEvent e) {
