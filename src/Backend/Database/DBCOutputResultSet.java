@@ -75,7 +75,7 @@ public class DBCOutputResultSet {
 	}// end main
 
 	@SuppressWarnings("exports")
-	public static ResultSet registerUserToDB(User user) throws ClassNotFoundException, SQLException {
+	public static ResultSet registerUserToDB(User user, Boolean driver) throws ClassNotFoundException, SQLException {
 		Connection conn = null;
 		Statement stmt = null;
 
@@ -87,7 +87,7 @@ public class DBCOutputResultSet {
 		System.out.println("Erstelle Abfrage...\n");
 		stmt = conn.createStatement();
 
-		stmt.executeUpdate(functions.registerUserSQL(user));
+		stmt.executeUpdate(functions.registerUserSQL(user, driver));
 		System.out.println("Schließe Verbindung");
 		return null;
 	}
