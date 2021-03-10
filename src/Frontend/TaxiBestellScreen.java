@@ -15,6 +15,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.Color;
 
 public class TaxiBestellScreen {
 
@@ -57,6 +58,7 @@ public class TaxiBestellScreen {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void initialize() {
 		frmTaxiBestellen = new JFrame();
+		frmTaxiBestellen.getContentPane().setBackground(new Color(99));
 		frmTaxiBestellen.setTitle("Taxi bestellen");
 		frmTaxiBestellen.setBounds(100, 100, 450, 300);
 		frmTaxiBestellen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
