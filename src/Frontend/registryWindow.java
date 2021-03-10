@@ -86,6 +86,7 @@ public class registryWindow {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				User user = new User(usernameBox.getText(), nameBox.getText(), emBox.getText(), pwBox.getText());
+				
 			}
 		});
 		btnNewButton_1.setBounds(112, 157, 105, 23);
