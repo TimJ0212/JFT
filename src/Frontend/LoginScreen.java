@@ -8,6 +8,7 @@ import javax.swing.JTextField;
 import Backend.functions;
 
 import javax.swing.JLabel;
+import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -17,7 +18,7 @@ public class LoginScreen {
 
 	private JFrame frmJft;
 	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField pwBox;
 
 	/**
 	 * Launch the application.
@@ -70,17 +71,17 @@ public class LoginScreen {
 		lblNewLabel_2.setBounds(64, 117, 56, 16);
 		frmJft.getContentPane().add(lblNewLabel_2);
 
-		textField_1 = new JTextField();
-		textField_1.setBounds(132, 112, 194, 26);
-		frmJft.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+		pwBox = new JPasswordField();
+		pwBox.setBounds(132, 112, 194, 26);
+		frmJft.getContentPane().add(pwBox);
+		pwBox.setColumns(10);
 
 		JButton btnNewButton = new JButton("Login");
 		btnNewButton.setBounds(186, 150, 85, 34);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String username = textField.getText();
-				String password = textField_1.getText();
+				String password = pwBox.getText();
 				System.out.println(username + " " + password);
 
 				try {
@@ -89,7 +90,6 @@ public class LoginScreen {
 						frmJft.dispose();
 					} else {
 						System.out.println("Falscher Nutzername oder falsches Password");
-						// TODO: pw feld im Fenster leeren und eingabe visuell mit "*" ersetzen
 					}
 				} catch (ClassNotFoundException e1) {
 					// TODO Auto-generated catch block
