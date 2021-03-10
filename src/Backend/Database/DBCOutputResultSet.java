@@ -88,6 +88,7 @@ public class DBCOutputResultSet {
 		stmt = conn.createStatement();
 
 		stmt.executeUpdate(functions.registerUserSQL(user));
+		System.out.println("Schließe Verbindung");
 		return null;
 	}
 
