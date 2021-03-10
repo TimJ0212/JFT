@@ -13,9 +13,8 @@ public class functions {
 
 	public static Boolean login(String username, String password) throws SQLException, ClassNotFoundException {
 		ResultSet rs = DBCOutputResultSet.loginDB(username);
-		int i = 0;
 		while (rs.next()) {
-			if (password == rs.getString(i))
+			if (password == rs.getString(1))
 				return true;
 		}
 		return false;
