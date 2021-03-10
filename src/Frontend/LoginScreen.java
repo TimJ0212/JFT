@@ -114,8 +114,8 @@ public class LoginScreen {
 		frmJft.getContentPane().add(btnNewButton_1);
 
 		JButton btnNewButton_2 = new JButton("Register");
-		btnNewButton_1.setBounds(0, 218, 85, 48);
-		btnNewButton_1.addActionListener(new ActionListener() {
+		btnNewButton_2.setBounds(0, 218, 85, 48);
+		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Frontend.Menue.main(null);
 				frmJft.dispose();
