@@ -9,6 +9,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -113,6 +114,19 @@ public class registryWindow {
 				}
 			}
 		});
+		btnNewButton_1.setBounds(112, 157, 105, 23);
+		frame.getContentPane().add(btnNewButton_1);
+
+		pwBox = new JPasswordField();
+		pwBox.setBounds(112, 95, 150, 20);
+		frame.getContentPane().add(pwBox);
+		pwBox.setColumns(10);
+
+		nameBox = new JTextField();
+		nameBox.setBounds(112, 126, 150, 20);
+		frame.getContentPane().add(nameBox);
+		nameBox.setColumns(10);
+
 		JLabel lblNewLabel_2 = new JLabel("Password");
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNewLabel_2.setBounds(10, 98, 92, 14);
