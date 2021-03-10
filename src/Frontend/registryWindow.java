@@ -69,6 +69,7 @@ public class registryWindow {
 		btnNewButton.setBounds(376, 11, 48, 23);
 		frame.getContentPane().add(btnNewButton);
 
+		JRadioButton FahrgastButton = new JRadioButton("Fahrgast");
 		usernameBox = new JTextField();
 		usernameBox.setBounds(112, 33, 150, 20);
 		frame.getContentPane().add(usernameBox);
@@ -95,7 +96,7 @@ public class registryWindow {
 				User user = new User(usernameBox.getText(), nameBox.getText(), emBox.getText(), pwBox.getText());
 				try {
 					Hauptklasse.loggedUser = user;
-					DBCOutputResultSet.registerUserToDB(user);
+					DBCOutputResultSet.registerUserToDB(user, buttonGroup.getSelection().equals(FahrgastButton));
 				} catch (ClassNotFoundException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -128,14 +129,14 @@ public class registryWindow {
 		lblNewLabel_3.setBounds(10, 129, 92, 14);
 		frame.getContentPane().add(lblNewLabel_3);
 
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("Fahrer");
-		buttonGroup.add(rdbtnNewRadioButton);
-		rdbtnNewRadioButton.setBounds(290, 63, 109, 23);
-		frame.getContentPane().add(rdbtnNewRadioButton);
+		JRadioButton FahrerButton = new JRadioButton("Fahrer");
+		buttonGroup.add(FahrerButton);
+		FahrerButton.setBounds(290, 63, 109, 23);
+		frame.getContentPane().add(FahrerButton);
 
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Fahrgast");
-		buttonGroup.add(rdbtnNewRadioButton_1);
-		rdbtnNewRadioButton_1.setBounds(290, 94, 109, 23);
-		frame.getContentPane().add(rdbtnNewRadioButton_1);
+		
+		buttonGroup.add(FahrgastButton);
+		FahrgastButton.setBounds(290, 94, 109, 23);
+		frame.getContentPane().add(FahrgastButton);
 	}
 }

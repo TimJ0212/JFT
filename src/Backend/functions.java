@@ -6,7 +6,7 @@ import Backend.Database.DBCOutputResultSet;
 
 public class functions {
 
-	public static String registerUserSQL(User user) {
+	public static String registerUserSQL(User user, Boolean driver) {
 		return "INSERT INTO `Benutzer`(`Username`, `Password`, `EMail`, `Name`, `Fahrer`) VALUES ('t435345345345345im','tim','tim','tim',1)";
 			//("INSERT INTO Benutzer ('Username', 'Passwort', 'EMail', 'Name') VALUES ('" + user.username + "', '"+ user.password + "', '" + user.email + "', '" + user.name + "');");
 	}
