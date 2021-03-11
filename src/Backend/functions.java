@@ -7,8 +7,16 @@ import Backend.Database.DBCOutputResultSet;
 public class functions {
 
 	public static String registerUserSQL(User user, Boolean driver) {
-		return "INSERT INTO `Benutzer`(`Username`, `Password`, `EMail`, `Name`, `Fahrer`) VALUES ('t435345345345345im','tim','tim','tim',1)";
-			//("INSERT INTO Benutzer ('Username', 'Passwort', 'EMail', 'Name') VALUES ('" + user.username + "', '"+ user.password + "', '" + user.email + "', '" + user.name + "');");
+		int x;
+		if (driver)
+			x = 1;
+		else
+			x = 0;
+		return "INSERT INTO `Benutzer`(`Username`, `Password`, `EMail`, `Name`, `Fahrer`) VALUES ('%s','%s','%s','%s',%i)"
+				.format(user.username, user.password, user.email, user.name, x);
+		// ("INSERT INTO Benutzer ('Username', 'Passwort', 'EMail', 'Name') VALUES ('" +
+		// user.username + "', '"+ user.password + "', '" + user.email + "', '" +
+		// user.name + "');");
 	}
 
 	public static Boolean login(String username, String password) throws SQLException, ClassNotFoundException {
@@ -16,7 +24,7 @@ public class functions {
 		while (rs.next()) {
 			if (password == rs.getString(1))
 				Hauptklasse.loggedUser = new User(username, password, null, null);
-				return true;
+			return true;
 		}
 		return false;
 	}
