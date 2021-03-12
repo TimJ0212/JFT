@@ -17,6 +17,11 @@ import javax.swing.SwingConstants;
 import Backend.Hauptklasse;
 import Backend.User;
 import Backend.Database.DBCOutputResultSet;
+import javax.swing.JPanel;
+import java.awt.Color;
+import java.awt.SystemColor;
+import javax.swing.UIManager;
+import javax.swing.ImageIcon;
 
 public class registryWindow {
 
@@ -55,7 +60,7 @@ public class registryWindow {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 657, 398);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
@@ -66,31 +71,32 @@ public class registryWindow {
 				Frontend.LoginScreen.main(null);
 			}
 		});
-		btnNewButton.setBounds(376, 11, 48, 23);
+		btnNewButton.setBounds(603, 6, 48, 23);
 		frame.getContentPane().add(btnNewButton);
-
-		JRadioButton FahrgastButton = new JRadioButton("Fahrgast");
 		usernameBox = new JTextField();
-		usernameBox.setBounds(112, 33, 150, 20);
+		usernameBox.setBounds(403, 28, 199, 42);
 		frame.getContentPane().add(usernameBox);
 		usernameBox.setColumns(10);
 
 		emBox = new JTextField();
-		emBox.setBounds(112, 64, 150, 20);
+		emBox.setBounds(403, 92, 199, 42);
 		frame.getContentPane().add(emBox);
 		emBox.setColumns(10);
 
+
+		JRadioButton FahrgastButton = new JRadioButton("Fahrgast");
 		JLabel lblNewLabel = new JLabel("Username");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel.setBounds(10, 36, 92, 14);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel.setBounds(403, 9, 92, 14);
 		frame.getContentPane().add(lblNewLabel);
 
 		JLabel lblNewLabel_1 = new JLabel("E-Mail");
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_1.setBounds(10, 67, 92, 14);
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel_1.setBounds(403, 82, 92, 14);
 		frame.getContentPane().add(lblNewLabel_1);
 
 		JButton btnNewButton_1 = new JButton("Registrieren");
+		btnNewButton_1.setBackground(UIManager.getColor("Button.select"));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				User user = new User(usernameBox.getText(), nameBox.getText(), emBox.getText(), pwBox.getText());
@@ -106,37 +112,50 @@ public class registryWindow {
 				}
 			}
 		});
-		btnNewButton_1.setBounds(112, 157, 105, 23);
+		btnNewButton_1.setBounds(403, 307, 119, 42);
 		frame.getContentPane().add(btnNewButton_1);
 
 		pwBox = new JPasswordField();
-		pwBox.setBounds(112, 95, 150, 20);
+		pwBox.setBounds(403, 172, 199, 42);
 		frame.getContentPane().add(pwBox);
 		pwBox.setColumns(10);
 
 		nameBox = new JTextField();
-		nameBox.setBounds(112, 126, 150, 20);
+		nameBox.setBounds(403, 252, 199, 42);
 		frame.getContentPane().add(nameBox);
 		nameBox.setColumns(10);
 
 		JLabel lblNewLabel_2 = new JLabel("Password");
-		lblNewLabel_2.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_2.setBounds(10, 98, 92, 14);
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel_2.setBounds(403, 158, 92, 14);
 		frame.getContentPane().add(lblNewLabel_2);
 
 		JLabel lblNewLabel_3 = new JLabel("Name");
-		lblNewLabel_3.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_3.setBounds(10, 129, 92, 14);
+		lblNewLabel_3.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel_3.setBounds(403, 239, 92, 14);
 		frame.getContentPane().add(lblNewLabel_3);
-
-		JRadioButton FahrerButton = new JRadioButton("Fahrer");
-		buttonGroup.add(FahrerButton);
-		FahrerButton.setBounds(290, 63, 109, 23);
-		frame.getContentPane().add(FahrerButton);
-
 		
-		buttonGroup.add(FahrgastButton);
-		FahrgastButton.setBounds(290, 94, 109, 23);
-		frame.getContentPane().add(FahrgastButton);
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.GRAY);
+		panel.setBounds(6, 6, 385, 358);
+		frame.getContentPane().add(panel);
+				panel.setLayout(null);
+				
+				JLabel lblNewLabel_4 = new JLabel("New label");
+				lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
+				lblNewLabel_4.setIcon(new ImageIcon(registryWindow.class.getResource("/images/TaxiBild.jpg")));
+				lblNewLabel_4.setBounds(6, 6, 373, 346);
+				panel.add(lblNewLabel_4);
+								
+										JRadioButton FahrerButton = new JRadioButton("Fahrer");
+										FahrerButton.setBounds(555, 307, 76, 23);
+										frame.getContentPane().add(FahrerButton);
+										buttonGroup.add(FahrerButton);
+										
+												FahrgastButton.setBounds(555, 328, 86, 23);
+												frame.getContentPane().add(FahrgastButton);
+												
+														
+														buttonGroup.add(FahrgastButton);
 	}
 }
