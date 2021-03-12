@@ -82,8 +82,12 @@ public class registryWindow {
 		frame.getContentPane().add(emBox);
 		emBox.setColumns(10);
 
+		JRadioButton FahrerButton = new JRadioButton("Fahrer");
+		FahrerButton.setBounds(555, 307, 76, 23);
+		frame.getContentPane().add(FahrerButton);
+		buttonGroup.add(FahrerButton);
 
-		JRadioButton FahrgastButton = new JRadioButton("Fahrgast");
+		JRadioButton FahrgastButton = new JRadioButton("Fahrgast", true);
 		JLabel lblNewLabel = new JLabel("Username");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNewLabel.setBounds(403, 9, 92, 14);
@@ -101,7 +105,7 @@ public class registryWindow {
 				User user = new User(usernameBox.getText(), nameBox.getText(), emBox.getText(), pwBox.getText());
 				try {
 					Hauptklasse.loggedUser = user;
-					DBCOutputResultSet.registerUserToDB(user, buttonGroup.getSelection().equals(FahrgastButton));
+					DBCOutputResultSet.registerUserToDB(user, FahrerButton.isSelected());
 				} catch (ClassNotFoundException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -133,28 +137,22 @@ public class registryWindow {
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNewLabel_3.setBounds(403, 239, 92, 14);
 		frame.getContentPane().add(lblNewLabel_3);
-		
+
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.GRAY);
 		panel.setBounds(6, 6, 385, 358);
 		frame.getContentPane().add(panel);
-				panel.setLayout(null);
-				
-				JLabel lblNewLabel_4 = new JLabel("New label");
-				lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
-				lblNewLabel_4.setIcon(new ImageIcon(registryWindow.class.getResource("/images/TaxiBild.jpg")));
-				lblNewLabel_4.setBounds(6, 6, 373, 346);
-				panel.add(lblNewLabel_4);
-								
-										JRadioButton FahrerButton = new JRadioButton("Fahrer");
-										FahrerButton.setBounds(555, 307, 76, 23);
-										frame.getContentPane().add(FahrerButton);
-										buttonGroup.add(FahrerButton);
-										
-												FahrgastButton.setBounds(555, 328, 86, 23);
-												frame.getContentPane().add(FahrgastButton);
-												
-														
-														buttonGroup.add(FahrgastButton);
+		panel.setLayout(null);
+
+		JLabel lblNewLabel_4 = new JLabel("New label");
+		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_4.setIcon(new ImageIcon(registryWindow.class.getResource("/images/TaxiBild.jpg")));
+		lblNewLabel_4.setBounds(6, 6, 373, 346);
+		panel.add(lblNewLabel_4);
+
+		FahrgastButton.setBounds(555, 328, 86, 23);
+		frame.getContentPane().add(FahrgastButton);
+
+		buttonGroup.add(FahrgastButton);
 	}
 }

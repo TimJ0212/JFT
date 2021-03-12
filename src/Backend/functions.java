@@ -29,7 +29,7 @@ public class functions {
 	}
 
 	public static String getUserInf(String username) {
-		return ("SELECT * FROM 'Benutzer' WHERE Username='" + username + "'");
+		return ("SELECT * FROM Benutzer WHERE Username='" + username + "'");
 	}
 
 	public static Boolean valInResultset(@SuppressWarnings("exports") ResultSet rs, String val) throws SQLException {
