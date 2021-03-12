@@ -12,11 +12,10 @@ public class functions {
 			x = 1;
 		else
 			x = 0;
-		return "INSERT INTO `Benutzer`(`Username`, `Password`, `EMail`, `Name`, `Fahrer`) VALUES ('%s','%s','%s','%s',%i)"
-				.format(user.username, user.password, user.email, user.name, x);
-		// ("INSERT INTO Benutzer ('Username', 'Passwort', 'EMail', 'Name') VALUES ('" +
-		// user.username + "', '"+ user.password + "', '" + user.email + "', '" +
-		// user.name + "');");
+		String s = String.format("INSERT INTO Benutzer VALUES ('%s','%s','%s','%s','%d')", user.username, user.password,
+				user.email, user.name, x);
+		System.out.println(s);
+		return s;
 	}
 
 	public static Boolean login(String username, String password) throws SQLException, ClassNotFoundException {
