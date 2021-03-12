@@ -1,5 +1,6 @@
 package Backend.Database;
 
+import Backend.Hauptklasse;
 import Frontend.TaxiBestellScreen;
 
 public class QueryCreator {
@@ -15,7 +16,7 @@ public class QueryCreator {
 	
 	public static String getInsertSQL(String[] args) {
 		
-		return "INSERT INTO angeboteneFahrten (Ort, Zeit, PersonenAnzahl) VALUES (" + "\""+  args[0] + "\"" + ", "+args[1]+", "+args[2]+")";
+		return "INSERT INTO angeboteneFahrten (FahererID, Ort, Zeit, PersonenAnzahl) VALUES ("+"\""+Hauptklasse.loggedUser.getUsername() +"\""+ "\""+  args[0] + "\"" + ", "+args[1]+", "+args[2]+")";
 	}
 
 }
