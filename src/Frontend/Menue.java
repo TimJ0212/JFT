@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 
 import Backend.Hauptklasse;
 import javax.swing.SwingConstants;
+import javax.swing.JPanel;
 
 public class Menue {
 
@@ -54,31 +55,54 @@ public class Menue {
 		String welcomeMessage = Hauptklasse.loggedUser.getUsername() == null
 				? "Wilkommen bei JFT-Taxi unbekannter Nutzer"
 				: "Wilkommen bei JFT-Taxi " + Hauptklasse.loggedUser.getUsername();
+
+		JButton btnNewButton_2 = new JButton("Logout");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Frontend.LoginScreen.main(null);
+				frmMen.dispose();
+			}
+		});
+		btnNewButton_2.setBounds(327, 6, 117, 29);
+		frmMen.getContentPane().add(btnNewButton_2);
+
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.GRAY);
+		panel.setBounds(6, 6, 261, 260);
+		frmMen.getContentPane().add(panel);
+		panel.setLayout(null);
 		JLabel lblNewLabel = new JLabel(welcomeMessage);
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setBounds(6, 6, 249, 53);
+		panel.add(lblNewLabel);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-
-		lblNewLabel.setBounds(40, 19, 353, 16);
-		frmMen.getContentPane().add(lblNewLabel);
-
-		JButton btnNewButton = new JButton("Taxi bestellen");
-		btnNewButton.setBounds(230, 108, 163, 54);
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Frontend.TaxiBestellScreen.main(null);
-				frmMen.dispose();
-			}
-		});
-		frmMen.getContentPane().add(btnNewButton);
-
-		JButton btnNewButton_1 = new JButton("Taxi bereitstellen");
-		btnNewButton_1.setBounds(40, 108, 163, 54);
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Frontend.TaxiBereitstellScreen.main(null);
-				frmMen.dispose();
-			}
-		});
-		frmMen.getContentPane().add(btnNewButton_1);
+		
+		JLabel lblNewLabel_1 = new JLabel("<html><body>Du kannst unseren Nutzern dein<br>Taxi in Echtzeit zur Verfügung stellen</body></html>");
+		lblNewLabel_1.setBounds(10, 71, 234, 53);
+		panel.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_1_1 = new JLabel("<html><body>Oder du buchst eine Fahrt bei einem unserer Fahrer</body></html>");
+		lblNewLabel_1_1.setBounds(10, 149, 234, 53);
+		panel.add(lblNewLabel_1_1);
+		
+				JButton btnNewButton = new JButton("Taxi bestellen");
+				btnNewButton.setBounds(279, 152, 150, 73);
+				frmMen.getContentPane().add(btnNewButton);
+				
+						JButton btnNewButton_1 = new JButton("Taxi bereitstellen");
+						btnNewButton_1.setBounds(279, 66, 150, 74);
+						frmMen.getContentPane().add(btnNewButton_1);
+						btnNewButton_1.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent e) {
+								frmMen.dispose();
+								Frontend.TaxiBereitstellScreen.main(null);
+							}
+						});
+				btnNewButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						frmMen.dispose();
+						Frontend.TaxiBestellScreen.main(null);
+					}
+				});
 	}
-
 }
