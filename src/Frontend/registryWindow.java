@@ -19,7 +19,6 @@ import Backend.User;
 import Backend.Database.DBCOutputResultSet;
 import javax.swing.JPanel;
 import java.awt.Color;
-import java.awt.SystemColor;
 import javax.swing.UIManager;
 import javax.swing.ImageIcon;
 
