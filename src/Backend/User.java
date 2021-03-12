@@ -14,9 +14,9 @@ public class User {
 	 * @param pw passwort
 	 */
 	public User(String un, String n, String em, String pw) {
-		this.username = n == null ? "unbekannt" : un.toLowerCase();
+		this.username = n == null ? "unbekannt" : un;
 		this.name = n;
-		this.email = em == null ? "unbekannt" : em.toLowerCase();
+		this.email = em == null ? "unbekannt" : em;
 		this.password = pw;
 	}
 

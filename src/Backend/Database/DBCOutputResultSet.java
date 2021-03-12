@@ -93,7 +93,7 @@ public class DBCOutputResultSet {
 	}
 
 	@SuppressWarnings("exports")
-	public static ResultSet loginDB(String username) throws ClassNotFoundException, SQLException {
+	public static ResultSet fetchUserData(String username) throws ClassNotFoundException, SQLException {
 		Connection conn = null;
 		Statement stmt = null;
 
