@@ -125,30 +125,30 @@ public class LoginScreen {
 			}
 		});
 		frmJft.getContentPane().add(btnNewButton_2);
-		
+
 		JPanel panel = new JPanel();
 		panel.setBackground(UIManager.getColor("Button.disabledText"));
 		panel.setBounds(6, 6, 163, 260);
 		frmJft.getContentPane().add(panel);
 		panel.setLayout(null);
-		
+
 		JLabel lblNewLabel_3 = new JLabel("Was gibt es neues ?");
 		lblNewLabel_3.setBounds(6, 6, 151, 16);
 		panel.add(lblNewLabel_3);
-		
+
 		JLabel lblNewLabel_4 = new JLabel("V.1.3:");
 		lblNewLabel_4.setBounds(6, 34, 61, 16);
 		panel.add(lblNewLabel_4);
-		
+
 		JLabel lblNewLabel_5 = new JLabel("Window Redesign");
 		lblNewLabel_5.setForeground(UIManager.getColor("Button.highlight"));
 		lblNewLabel_5.setBounds(6, 51, 151, 36);
 		panel.add(lblNewLabel_5);
-		
+
 		JLabel lblNewLabel_6 = new JLabel("V.1.2");
 		lblNewLabel_6.setBounds(6, 99, 61, 16);
 		panel.add(lblNewLabel_6);
-		
+
 		JLabel lblNewLabel_5_1 = new JLabel("Registrierung");
 		lblNewLabel_5_1.setForeground(Color.WHITE);
 		lblNewLabel_5_1.setBounds(6, 120, 151, 36);

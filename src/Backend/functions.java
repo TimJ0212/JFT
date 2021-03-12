@@ -19,10 +19,11 @@ public class functions {
 	}
 
 	public static Boolean login(String username, String password) throws SQLException, ClassNotFoundException {
-		ResultSet rs = DBCOutputResultSet.loginDB(username);
+		ResultSet rs = DBCOutputResultSet.loginDB(username.toLowerCase());
 		while (rs.next()) {
 			if (password == rs.getString(1))
-				Hauptklasse.loggedUser = new User(username, password, null, null);
+				System.out.println(rs.getString(1));
+			Hauptklasse.loggedUser = new User(username, password, null, null);
 			return true;
 		}
 		return false;
