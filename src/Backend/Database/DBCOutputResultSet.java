@@ -99,10 +99,10 @@ public class DBCOutputResultSet {
 
 		Class.forName("com.mysql.cj.jdbc.Driver");
 
-		System.out.println("Verbindung zur database...");
+		System.out.println("Verbindung zur Datenbank zur Überprüfung.");
 		conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
-		System.out.println("Erstelle Abfrage...\n");
+		System.out.println("Erstelle Abfrage für Überprüfung\n");
 		stmt = conn.createStatement();
 
 		ResultSet rs = stmt.executeQuery(functions.getUserInf(username));
