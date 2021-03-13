@@ -35,7 +35,7 @@ public class functions {
 	public static Boolean login(String username, String password) throws SQLException, ClassNotFoundException {
 		ResultSet rs = DBCOutputResultSet.fetchUserData(username);
 		while (rs.next()) {
-			if (password.equals(rs.getString(2))) {
+			if (password.equals(functions.decrypt(rs.getString(2)))) { //NEW: Encrypt
 
 				Hauptklasse.loggedUser = new User(rs.getString(1), password, null, null);
 				return true;
@@ -55,5 +55,25 @@ public class functions {
 	public static String calculateMoney(String personen) {
 		return String.valueOf(Integer.valueOf(personen) * 10);
 
+	}
+	
+	public static String encrypt(String pw) {
+		char[] chars = pw.toCharArray();
+		String output = "";
+		for(char c: chars) {
+			 c +=1;
+			 output = output +c;
+		}	
+		return output;
+	}
+	
+	public static String decrypt(String pw) {
+		char[] chars = pw.toCharArray();
+		String output = "";
+		for(char c: chars) {
+			 c -=1;
+			 output = output +c;
+		}	
+		return output;
 	}
 }
