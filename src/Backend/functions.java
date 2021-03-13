@@ -29,14 +29,15 @@ public class functions {
 			x = 0;
 		String s = String.format("INSERT INTO Benutzer VALUES ('%s','%s','%s','%s','%d')", user.username, user.password,
 				user.email, user.name, x);
+		System.out.println(s);
 		return s;
 	}
 
 	public static Boolean login(String username, String password) throws SQLException, ClassNotFoundException {
 		ResultSet rs = DBCOutputResultSet.fetchUserData(username);
 		while (rs.next()) {
-			if (password.equals(functions.decrypt(rs.getString(2)))) { //NEW: Encrypt
-
+			if (password.equals(rs.getString(2))) { //NEW: Decrypt
+				System.out.println(rs.getString(2));
 				Hauptklasse.loggedUser = new User(rs.getString(1), password, null, null);
 				return true;
 			}
@@ -57,23 +58,23 @@ public class functions {
 
 	}
 	
-	public static String encrypt(String pw) {
-		char[] chars = pw.toCharArray();
-		String output = "";
-		for(char c: chars) {
-			 c +=1;
-			 output = output +c;
-		}	
-		return output;
-	}
+//	public static String encrypt(String pw) {
+//		char[] chars = pw.toCharArray();
+//		String output = "";
+//		for(char c: chars) {
+//			 c +=1;
+//			 output = output +c;
+//		}	
+//		return output;
+//	}
 	
-	public static String decrypt(String pw) {
-		char[] chars = pw.toCharArray();
-		String output = "";
-		for(char c: chars) {
-			 c -=1;
-			 output = output +c;
-		}	
-		return output;
-	}
+//	public static String decrypt(String pw) {
+//		char[] chars = pw.toCharArray();
+//		String output = "";
+//		for(char c: chars) {
+//			 c -=1;
+//			 output = output +c;
+//		}	
+//		return output;
+//	}
 }

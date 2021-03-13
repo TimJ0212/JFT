@@ -84,7 +84,7 @@ public class LoginScreen {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String username = textField.getText();
-				String password = functions.encrypt(pwBox.getText()); //NEW: Encryption
+				String password = pwBox.getText(); //NEW: Encryption
 				System.out.println(username + " " + password);
 
 				try {

@@ -16,7 +16,6 @@ import javax.swing.SwingConstants;
 
 import Backend.Hauptklasse;
 import Backend.User;
-import Backend.functions;
 import Backend.Database.DBCOutputResultSet;
 import javax.swing.JPanel;
 import java.awt.Color;
@@ -104,7 +103,7 @@ public class registryWindow {
 		RegButton.setBackground(UIManager.getColor("Button.select"));
 		RegButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				User user = new User(usernameBox.getText(), nameBox.getText(), emBox.getText(), functions.encrypt(pwBox.getText())); //New: Encrypt
+				User user = new User(usernameBox.getText(), nameBox.getText(), emBox.getText(), pwBox.getText()); //New: Encrypt
 				try {
 					Hauptklasse.loggedUser = user;
 					DBCOutputResultSet.registerUserToDB(user, FahrerButton.isSelected());
