@@ -1,6 +1,8 @@
 package Backend;
 
 import java.sql.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import Backend.Database.DBCOutputResultSet;
 
@@ -12,6 +14,14 @@ public class functions {
 			System.out.println("Username bereits vergeben");
 			return null; // Durch "nutzername bereits vergeben" ersetzen
 		}
+		final String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+		Pattern pattern = Pattern.compile(regex);
+	    Matcher matcher = pattern.matcher(user.email);
+	    if(!matcher.matches()) {
+	    	System.out.println("Email falsch");
+	    	return null;
+	    }
+	    System.out.println("Email OK");
 		int x;
 		if (driver)
 			x = 1;
