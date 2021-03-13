@@ -15,8 +15,9 @@ public class QueryCreator {
 	}
 	
 	public static String getInsertSQL(String[] args) {
-		
-		return "INSERT INTO angeboteneFahrten (FahererID, Ort, Zeit, PersonenAnzahl) VALUES ("+"\""+Hauptklasse.loggedUser.getUsername() +"\""+ "\""+  args[0] + "\"" + ", "+args[1]+", "+args[2]+")";
+		String de =  "INSERT INTO angeboteneFahrten (Fahrer, Ort, Zeit, PersonenAnzahl) VALUES ("+"\""+Hauptklasse.loggedUser.getUsername() +"\""+ ", " +"\""+  args[0] + "\"" + ", "+args[1]+", "+args[2]+")";
+		System.out.println(de);
+		return de;
 	}
 
 }

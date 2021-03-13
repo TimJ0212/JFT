@@ -63,15 +63,15 @@ public class registryWindow {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		JButton btnNewButton = new JButton("...");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton backButton = new JButton("...");
+		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
 				Frontend.LoginScreen.main(null);
 			}
 		});
-		btnNewButton.setBounds(603, 6, 48, 23);
-		frame.getContentPane().add(btnNewButton);
+		backButton.setBounds(603, 6, 48, 23);
+		frame.getContentPane().add(backButton);
 		usernameBox = new JTextField();
 		usernameBox.setBounds(403, 28, 199, 42);
 		frame.getContentPane().add(usernameBox);
@@ -88,19 +88,20 @@ public class registryWindow {
 		buttonGroup.add(FahrerButton);
 
 		JRadioButton FahrgastButton = new JRadioButton("Fahrgast", true);
-		JLabel lblNewLabel = new JLabel("Username");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNewLabel.setBounds(403, 9, 92, 14);
-		frame.getContentPane().add(lblNewLabel);
+		JLabel UsernameText = new JLabel("Username");
+		UsernameText.setHorizontalAlignment(SwingConstants.LEFT);
+		UsernameText.setBounds(403, 9, 92, 14);
+		frame.getContentPane().add(UsernameText);
 
-		JLabel lblNewLabel_1 = new JLabel("E-Mail");
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNewLabel_1.setBounds(403, 82, 92, 14);
-		frame.getContentPane().add(lblNewLabel_1);
+		JLabel EmailText = new JLabel("E-Mail");
+		EmailText.setHorizontalAlignment(SwingConstants.LEFT);
+		EmailText.setBounds(403, 82, 92, 14);
+		frame.getContentPane().add(EmailText);
 
-		JButton btnNewButton_1 = new JButton("Registrieren");
-		btnNewButton_1.setBackground(UIManager.getColor("Button.select"));
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton RegButton = new JButton("Registrieren");
+		RegButton.setToolTipText("Registriere dich jetzt");
+		RegButton.setBackground(UIManager.getColor("Button.select"));
+		RegButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				User user = new User(usernameBox.getText(), nameBox.getText(), emBox.getText(), pwBox.getText());
 				try {
@@ -115,8 +116,8 @@ public class registryWindow {
 				}
 			}
 		});
-		btnNewButton_1.setBounds(403, 307, 119, 42);
-		frame.getContentPane().add(btnNewButton_1);
+		RegButton.setBounds(403, 307, 119, 42);
+		frame.getContentPane().add(RegButton);
 
 		pwBox = new JPasswordField();
 		pwBox.setBounds(403, 172, 199, 42);
@@ -128,27 +129,27 @@ public class registryWindow {
 		frame.getContentPane().add(nameBox);
 		nameBox.setColumns(10);
 
-		JLabel lblNewLabel_2 = new JLabel("Password");
-		lblNewLabel_2.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNewLabel_2.setBounds(403, 158, 92, 14);
-		frame.getContentPane().add(lblNewLabel_2);
+		JLabel PasswordText = new JLabel("Password");
+		PasswordText.setHorizontalAlignment(SwingConstants.LEFT);
+		PasswordText.setBounds(403, 158, 92, 14);
+		frame.getContentPane().add(PasswordText);
 
-		JLabel lblNewLabel_3 = new JLabel("Name");
-		lblNewLabel_3.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNewLabel_3.setBounds(403, 239, 92, 14);
-		frame.getContentPane().add(lblNewLabel_3);
+		JLabel Username = new JLabel("Name");
+		Username.setHorizontalAlignment(SwingConstants.LEFT);
+		Username.setBounds(403, 239, 92, 14);
+		frame.getContentPane().add(Username);
 
-		JPanel panel = new JPanel();
-		panel.setBackground(Color.GRAY);
-		panel.setBounds(6, 6, 385, 358);
-		frame.getContentPane().add(panel);
-		panel.setLayout(null);
+		JPanel BildPanel = new JPanel();
+		BildPanel.setBackground(Color.GRAY);
+		BildPanel.setBounds(6, 6, 385, 358);
+		frame.getContentPane().add(BildPanel);
+		BildPanel.setLayout(null);
 
-		JLabel lblNewLabel_4 = new JLabel("New label");
-		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_4.setIcon(new ImageIcon(registryWindow.class.getResource("/images/TaxiBild.jpg")));
-		lblNewLabel_4.setBounds(6, 6, 373, 346);
-		panel.add(lblNewLabel_4);
+		JLabel TaxiBild = new JLabel("New label");
+		TaxiBild.setHorizontalAlignment(SwingConstants.CENTER);
+		TaxiBild.setIcon(new ImageIcon(registryWindow.class.getResource("/images/TaxiBild.jpg")));
+		TaxiBild.setBounds(6, 6, 373, 346);
+		BildPanel.add(TaxiBild);
 
 		FahrgastButton.setBounds(555, 328, 86, 23);
 		frame.getContentPane().add(FahrgastButton);
