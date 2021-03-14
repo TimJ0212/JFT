@@ -103,10 +103,13 @@ public class registryWindow {
 		RegButton.setBackground(UIManager.getColor("Button.select"));
 		RegButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				User user = new User(usernameBox.getText(), nameBox.getText(), emBox.getText(), pwBox.getText()); //New: Encrypt
+				User user = new User(usernameBox.getText(), nameBox.getText(), emBox.getText(), pwBox.getText()); // New:
+																													// Encrypt
 				try {
 					Hauptklasse.loggedUser = user;
 					DBCOutputResultSet.registerUserToDB(user, FahrerButton.isSelected());
+					Frontend.LoginScreen.main(null);
+					frame.dispose();
 				} catch (ClassNotFoundException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
