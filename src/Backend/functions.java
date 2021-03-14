@@ -12,16 +12,16 @@ public class functions {
 		ResultSet rs = DBCOutputResultSet.fetchUserData(user.username);
 		if (rs.next() && rs.getString(1).toUpperCase().equals(user.username.toUpperCase())) {
 			System.out.println("Username bereits vergeben");
-			return null; // Durch "nutzername bereits vergeben" ersetzen
+			return null; // Error fixen und Durch "nutzername bereits vergeben" ersetzen
 		}
 		final String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
 		Pattern pattern = Pattern.compile(regex);
-	    Matcher matcher = pattern.matcher(user.email);
-	    if(!matcher.matches()) {
-	    	System.out.println("Email falsch");
-	    	return null;
-	    }
-	    System.out.println("Email OK");
+		Matcher matcher = pattern.matcher(user.email);
+		if (!matcher.matches()) {
+			System.out.println("Email falsch");
+			return null;
+		}
+		System.out.println("Email OK");
 		int x;
 		if (driver)
 			x = 1;
@@ -36,7 +36,7 @@ public class functions {
 	public static Boolean login(String username, String password) throws SQLException, ClassNotFoundException {
 		ResultSet rs = DBCOutputResultSet.fetchUserData(username);
 		while (rs.next()) {
-			if (password.equals(rs.getString(2))) { //NEW: Decrypt
+			if (password.equals(rs.getString(2))) { // NEW: Decrypt
 				System.out.println(rs.getString(2));
 				Hauptklasse.loggedUser = new User(rs.getString(1), password, null, null);
 				return true;
@@ -57,24 +57,24 @@ public class functions {
 		return String.valueOf(Integer.valueOf(personen) * 10);
 
 	}
-	
-//	public static String encrypt(String pw) {
-//		char[] chars = pw.toCharArray();
-//		String output = "";
-//		for(char c: chars) {
-//			 c +=1;
-//			 output = output +c;
-//		}	
-//		return output;
-//	}
-	
-//	public static String decrypt(String pw) {
-//		char[] chars = pw.toCharArray();
-//		String output = "";
-//		for(char c: chars) {
-//			 c -=1;
-//			 output = output +c;
-//		}	
-//		return output;
-//	}
+
+	// public static String encrypt(String pw) {
+	// char[] chars = pw.toCharArray();
+	// String output = "";
+	// for(char c: chars) {
+	// c +=1;
+	// output = output +c;
+	// }
+	// return output;
+	// }
+
+	// public static String decrypt(String pw) {
+	// char[] chars = pw.toCharArray();
+	// String output = "";
+	// for(char c: chars) {
+	// c -=1;
+	// output = output +c;
+	// }
+	// return output;
+	// }
 }
