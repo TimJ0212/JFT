@@ -1,6 +1,7 @@
 package Frontend;
 
 import java.awt.EventQueue;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
@@ -9,6 +10,7 @@ import Backend.functions;
 
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -16,11 +18,13 @@ import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import java.awt.Color;
+import java.awt.Toolkit;
+import javax.swing.SwingConstants;
 
 public class LoginScreen {
 
 	private JFrame frmJft;
-	private JTextField textField;
+	private JTextField usernameInput;
 	private JTextField pwBox;
 
 	/**
@@ -51,39 +55,40 @@ public class LoginScreen {
 	 */
 	private void initialize() {
 		frmJft = new JFrame();
+		frmJft.setIconImage(Toolkit.getDefaultToolkit().getImage(LoginScreen.class.getResource("/images/JFTLogo.png")));
 		frmJft.getContentPane().setBackground(new java.awt.Color(224, 229, 225));
 		frmJft.setTitle("JFT");
 		frmJft.setBounds(100, 100, 450, 300);
 		frmJft.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmJft.getContentPane().setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("Wilkommen bei JFT-Taxi");
-		lblNewLabel.setBounds(250, 6, 155, 16);
-		frmJft.getContentPane().add(lblNewLabel);
+		JLabel welcomeBox = new JLabel("Wilkommen bei JFT-Taxi");
+		welcomeBox.setBounds(220, 22, 155, 16);
+		frmJft.getContentPane().add(welcomeBox);
 
-		JLabel lblNewLabel_1 = new JLabel("Username");
-		lblNewLabel_1.setBounds(176, 86, 62, 16);
-		frmJft.getContentPane().add(lblNewLabel_1);
+		JLabel usernameLable = new JLabel("Username");
+		usernameLable.setBounds(176, 86, 62, 16);
+		frmJft.getContentPane().add(usernameLable);
 
-		textField = new JTextField();
-		textField.setBounds(250, 81, 194, 26);
-		frmJft.getContentPane().add(textField);
-		textField.setColumns(10);
+		usernameInput = new JTextField();
+		usernameInput.setBounds(250, 81, 194, 26);
+		frmJft.getContentPane().add(usernameInput);
+		usernameInput.setColumns(10);
 
-		JLabel lblNewLabel_2 = new JLabel("Passwort");
-		lblNewLabel_2.setBounds(186, 114, 56, 16);
-		frmJft.getContentPane().add(lblNewLabel_2);
+		JLabel usernamePasswort = new JLabel("Passwort");
+		usernamePasswort.setBounds(186, 114, 56, 16);
+		frmJft.getContentPane().add(usernamePasswort);
 
 		pwBox = new JPasswordField();
 		pwBox.setBounds(250, 112, 194, 26);
 		frmJft.getContentPane().add(pwBox);
 		pwBox.setColumns(10);
 
-		JButton btnNewButton = new JButton("Login");
-		btnNewButton.setBounds(305, 161, 85, 34);
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton loginButton = new JButton("Login");
+		loginButton.setBounds(305, 161, 85, 34);
+		loginButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String username = textField.getText();
+				String username = usernameInput.getText();
 				String password = pwBox.getText(); //NEW: Encryption
 				System.out.println(username + " " + password);
 
@@ -104,55 +109,61 @@ public class LoginScreen {
 
 			}
 		});
-		frmJft.getContentPane().add(btnNewButton);
+		frmJft.getContentPane().add(loginButton);
 
-		JButton btnNewButton_1 = new JButton("Debug");
-		btnNewButton_1.setBounds(359, 218, 85, 48);
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton debugButton = new JButton("Debug");
+		debugButton.setBounds(359, 218, 85, 48);
+		debugButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Frontend.Menue.main(null);
 				frmJft.dispose();
 			}
 		});
-		frmJft.getContentPane().add(btnNewButton_1);
+		frmJft.getContentPane().add(debugButton);
 
-		JButton btnNewButton_2 = new JButton("Register");
-		btnNewButton_2.setBounds(241, 218, 85, 48);
-		btnNewButton_2.addActionListener(new ActionListener() {
+		JButton registerButton = new JButton("Register");
+		registerButton.setBounds(241, 218, 85, 48);
+		registerButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Frontend.registryWindow.main(null);
 				frmJft.dispose();
 			}
 		});
-		frmJft.getContentPane().add(btnNewButton_2);
+		frmJft.getContentPane().add(registerButton);
 
-		JPanel panel = new JPanel();
-		panel.setBackground(UIManager.getColor("Button.disabledText"));
-		panel.setBounds(6, 6, 163, 260);
-		frmJft.getContentPane().add(panel);
-		panel.setLayout(null);
+		JPanel neueInfoPanel = new JPanel();
+		neueInfoPanel.setBackground(UIManager.getColor("Button.disabledText"));
+		neueInfoPanel.setBounds(6, 6, 163, 260);
+		frmJft.getContentPane().add(neueInfoPanel);
+		neueInfoPanel.setLayout(null);
 
 		JLabel lblNewLabel_3 = new JLabel("Was gibt es neues ?");
 		lblNewLabel_3.setBounds(6, 6, 151, 16);
-		panel.add(lblNewLabel_3);
+		neueInfoPanel.add(lblNewLabel_3);
 
 		JLabel lblNewLabel_4 = new JLabel("V.1.3:");
 		lblNewLabel_4.setBounds(6, 34, 61, 16);
-		panel.add(lblNewLabel_4);
+		neueInfoPanel.add(lblNewLabel_4);
 
 		JLabel lblNewLabel_5 = new JLabel("Window Redesign");
 		lblNewLabel_5.setForeground(UIManager.getColor("Button.highlight"));
 		lblNewLabel_5.setBounds(6, 51, 151, 36);
-		panel.add(lblNewLabel_5);
+		neueInfoPanel.add(lblNewLabel_5);
 
 		JLabel lblNewLabel_6 = new JLabel("V.1.2");
 		lblNewLabel_6.setBounds(6, 99, 61, 16);
-		panel.add(lblNewLabel_6);
+		neueInfoPanel.add(lblNewLabel_6);
 
 		JLabel lblNewLabel_5_1 = new JLabel("Registrierung");
 		lblNewLabel_5_1.setForeground(Color.WHITE);
 		lblNewLabel_5_1.setBounds(6, 120, 151, 36);
-		panel.add(lblNewLabel_5_1);
+		neueInfoPanel.add(lblNewLabel_5_1);
+		
+		JLabel welcomeLogo = new JLabel("");
+		welcomeLogo.setHorizontalAlignment(SwingConstants.RIGHT);
+		welcomeLogo.setBounds(359, 1, 75, 59);
+		frmJft.getContentPane().add(welcomeLogo);
+		Image image = new ImageIcon(this.getClass().getResource("/images/JFTLogo.png")).getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT);
+		welcomeLogo.setIcon(new ImageIcon(image));
 	}
-
 }

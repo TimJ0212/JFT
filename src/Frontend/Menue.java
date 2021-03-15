@@ -63,7 +63,7 @@ public class Menue {
 				frmMen.dispose();
 			}
 		});
-		btnNewButton_2.setBounds(327, 6, 117, 29);
+		btnNewButton_2.setBounds(277, 6, 117, 29);
 		frmMen.getContentPane().add(btnNewButton_2);
 
 		JPanel panel = new JPanel();
