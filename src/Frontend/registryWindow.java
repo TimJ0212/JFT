@@ -25,7 +25,8 @@ import javax.swing.ImageIcon;
 public class registryWindow {
 
 	private JFrame frame;
-	private JTextField usernameBox;
+	@SuppressWarnings("exports")
+	public static JTextField usernameBox;
 	private JTextField emBox;
 	private JTextField pwBox;
 	private JTextField nameBox;
@@ -108,6 +109,7 @@ public class registryWindow {
 				try {
 					Hauptklasse.loggedUser = user;
 					DBCOutputResultSet.registerUserToDB(user, FahrerButton.isSelected());
+					popup.test(true);
 					Frontend.LoginScreen.main(null);
 					frame.dispose();
 				} catch (ClassNotFoundException e1) {

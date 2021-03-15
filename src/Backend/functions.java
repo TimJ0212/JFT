@@ -12,6 +12,7 @@ public class functions {
 		ResultSet rs = DBCOutputResultSet.fetchUserData(user.username);
 		if (rs.next() && rs.getString(1).toUpperCase().equals(user.username.toUpperCase())) {
 			System.out.println("Username bereits vergeben");
+			Frontend.popup.test(false);
 			return null; // Error fixen und Durch "nutzername bereits vergeben" ersetzen
 		}
 		final String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
@@ -19,6 +20,7 @@ public class functions {
 		Matcher matcher = pattern.matcher(user.email);
 		if (!matcher.matches()) {
 			System.out.println("Email falsch");
+			Frontend.popup.test(false);
 			return null;
 		}
 		System.out.println("Email OK");
@@ -30,6 +32,7 @@ public class functions {
 		String s = String.format("INSERT INTO Benutzer VALUES ('%s','%s','%s','%s','%d')", user.username,
 				encrypt(user.password), user.email, user.name, x);
 		System.out.println(s);
+		
 		return s;
 	}
 
@@ -59,6 +62,10 @@ public class functions {
 	}
 
 	public static String encrypt(String pw) {
+		if(Hauptklasse.loggedUser.getUsername() == null) {
+			pw = pw + Frontend.registryWindow.usernameBox.getText().charAt(0);
+		}
+		pw = pw + Backend.Hauptklasse.loggedUser.getUsername().charAt(0);
 		char[] chars = pw.toCharArray();
 		String output = "";
 		for (char c : chars) {
@@ -69,6 +76,7 @@ public class functions {
 	}
 
 	public static String decrypt(String pw) {
+		pw = pw.substring(0, pw.length()-1);
 		char[] chars = pw.toCharArray();
 		String output = "";
 		for (char c : chars) {
