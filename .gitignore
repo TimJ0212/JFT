@@ -21,3 +21,5 @@ src/.DS_Store
 .vscode/launch.json
 .classpath
 .classpath
+.classpath
+.settings/org.eclipse.jdt.core.prefs
