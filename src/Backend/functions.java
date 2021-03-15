@@ -59,6 +59,10 @@ public class functions {
 	}
 
 	public static String encrypt(String pw) {
+		if(Hauptklasse.loggedUser.getUsername() == null) {
+			pw = pw + Frontend.registryWindow.usernameBox.getText().charAt(0);
+		}
+		pw = pw + Backend.Hauptklasse.loggedUser.getUsername().charAt(0);
 		char[] chars = pw.toCharArray();
 		String output = "";
 		for (char c : chars) {
@@ -69,6 +73,7 @@ public class functions {
 	}
 
 	public static String decrypt(String pw) {
+		pw = pw.substring(0, pw.length()-1);
 		char[] chars = pw.toCharArray();
 		String output = "";
 		for (char c : chars) {

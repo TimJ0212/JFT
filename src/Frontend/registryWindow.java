@@ -25,7 +25,8 @@ import javax.swing.ImageIcon;
 public class registryWindow {
 
 	private JFrame frame;
-	private JTextField usernameBox;
+	@SuppressWarnings("exports")
+	public static JTextField usernameBox;
 	private JTextField emBox;
 	private JTextField pwBox;
 	private JTextField nameBox;
