@@ -1,10 +1,12 @@
 package Backend;
 
-import java.sql.*;
+
+import java.sql.*;	
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import Backend.Database.DBCOutputResultSet;
+
 
 public class functions {
 
@@ -32,7 +34,7 @@ public class functions {
 		String s = String.format("INSERT INTO Benutzer VALUES ('%s','%s','%s','%s','%d')", user.username,
 				encrypt(user.password), user.email, user.name, x);
 		System.out.println(s);
-		
+
 		return s;
 	}
 
@@ -62,7 +64,7 @@ public class functions {
 	}
 
 	public static String encrypt(String pw) {
-		if(Hauptklasse.loggedUser.getUsername() == null) {
+		if (Hauptklasse.loggedUser.getUsername() == null) {
 			pw = pw + Frontend.registryWindow.usernameBox.getText().charAt(0);
 		}
 		pw = pw + Backend.Hauptklasse.loggedUser.getUsername().charAt(0);
@@ -76,7 +78,7 @@ public class functions {
 	}
 
 	public static String decrypt(String pw) {
-		pw = pw.substring(0, pw.length()-1);
+		pw = pw.substring(0, pw.length() - 1);
 		char[] chars = pw.toCharArray();
 		String output = "";
 		for (char c : chars) {
@@ -84,5 +86,11 @@ public class functions {
 			output = output + c;
 		}
 		return output;
+	}
+	// DEBUG--------------------------------------------------------------------------------------------------------
+
+	public static String addCitiesToDB(String JSONFilePath) {
+
+		return null;
 	}
 }
