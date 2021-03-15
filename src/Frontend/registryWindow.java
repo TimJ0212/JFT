@@ -109,6 +109,7 @@ public class registryWindow {
 				try {
 					Hauptklasse.loggedUser = user;
 					DBCOutputResultSet.registerUserToDB(user, FahrerButton.isSelected());
+					popup.test(true);
 					Frontend.LoginScreen.main(null);
 					frame.dispose();
 				} catch (ClassNotFoundException e1) {
