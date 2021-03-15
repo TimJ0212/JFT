@@ -16,10 +16,6 @@ src/.DS_Store~Stashed changes
 src/.DS_Store
 .project
 .project
-.classpath
-.classpath
 .vscode/launch.json
-.classpath
-.classpath
-.classpath
 .settings/org.eclipse.jdt.core.prefs
+.classpath
