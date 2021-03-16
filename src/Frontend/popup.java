@@ -5,19 +5,32 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Window.Type;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.SwingConstants;
+import javax.swing.Timer;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.SystemColor;
 
 public class popup {
 
-	private JFrame frame;
+	private static JFrame frame;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void test(boolean succes) {
+		Timer timer = new Timer(2000, new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                frame.setVisible(false);
+                frame.dispose();
+            }
+        });
+        timer.setRepeats(false);
+        timer.start();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
