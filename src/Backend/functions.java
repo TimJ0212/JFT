@@ -1,9 +1,17 @@
 package Backend;
 
-import java.sql.*;	
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-//import org.json.simple.*;
+
+import org.json.simple.*;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 import Backend.Database.DBCOutputResultSet;
 
 public class functions {
@@ -87,8 +95,24 @@ public class functions {
 	}
 	// DEBUG--------------------------------------------------------------------------------------------------------
 
-	public static String addCitiesToDB(String JSONFilePath) {
-
+	public static String addCityToDB(JSONArray JSONData) throws IOException, ParseException {
+		
+		Object obj = (Object) JSONData;
+		JSONArray arr = (JSONArray) obj;
+		
+		for(Object o :arr){
+			JSONObject jo = (JSONObject) o;
+			System.out.println(jo);
+		}
 		return null;
+	}
+	
+	public static JSONArray fetchJSON(String filePath) throws IOException, ParseException {
+		JSONParser jp = new JSONParser();
+		File f = new File(filePath);
+		FileReader fr = new FileReader(f);
+		JSONArray arr = (JSONArray) jp.parse(fr);
+	
+		return arr;
 	}
 }
