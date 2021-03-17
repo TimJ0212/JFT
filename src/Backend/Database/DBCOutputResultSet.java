@@ -2,6 +2,8 @@ package Backend.Database;
 
 import java.sql.*;
 
+import org.json.simple.JSONArray;
+
 import Backend.User;
 import Backend.functions;
 
@@ -106,6 +108,24 @@ public class DBCOutputResultSet {
 		stmt = conn.createStatement();
 
 		ResultSet rs = stmt.executeQuery(functions.getUserInf(username));
+
+		return rs;
+	}
+	
+	@SuppressWarnings("exports")
+	public static ResultSet addCitySQL(String SQLCMD) throws ClassNotFoundException, SQLException {
+		Connection conn = null;
+		Statement stmt = null;
+
+		Class.forName("com.mysql.cj.jdbc.Driver");
+
+		System.out.println("Verbindung zur Datenbank...");
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+		
+		stmt = conn.createStatement();
+
+		ResultSet rs = stmt.executeQuery(SQLCMD);
 
 		return rs;
 	}

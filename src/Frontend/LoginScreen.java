@@ -120,12 +120,19 @@ public class LoginScreen {
 		debugButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					functions.addCityToDB(functions.fetchJSON("resources/cities.json"));
+					functions.addCitiesToDB(functions.fetchJSONArray("resources/cities.json"));
 				} catch (IOException | ParseException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				//frmJft.dispose();
+ catch (ClassNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		frmJft.getContentPane().add(debugButton);

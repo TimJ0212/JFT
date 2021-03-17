@@ -95,19 +95,23 @@ public class functions {
 	}
 	// DEBUG--------------------------------------------------------------------------------------------------------
 
-	public static String addCityToDB(JSONArray JSONData) throws IOException, ParseException {
+	public static void addCitiesToDB(JSONArray JSONData) throws IOException, ParseException, ClassNotFoundException, SQLException {
 		
-		Object obj = (Object) JSONData;
-		JSONArray arr = (JSONArray) obj;
+		Object j = (Object) JSONData;
+		JSONArray arr = (JSONArray) j;
 		
-		for(Object o :arr){
-			JSONObject jo = (JSONObject) o;
-			System.out.println(jo);
+		
+		
+		for(Object obj: arr) {
+			String s = "INSERT INTO Staedte VALUES(%s, %d, %d, %s, %i)";
+			JSONObject jo = (JSONObject) obj;
+			s = s.formatted(jo.get("city_ascii"),jo.get("lat"),jo.get("lng"),jo.get("country"),jo.get("id"));
+			Backend.Database.DBCOutputResultSet.addCitySQL(s);
 		}
-		return null;
+
 	}
 	
-	public static JSONArray fetchJSON(String filePath) throws IOException, ParseException {
+	public static JSONArray fetchJSONArray(String filePath) throws IOException, ParseException {
 		JSONParser jp = new JSONParser();
 		File f = new File(filePath);
 		FileReader fr = new FileReader(f);
@@ -115,4 +119,5 @@ public class functions {
 	
 		return arr;
 	}
+	
 }
