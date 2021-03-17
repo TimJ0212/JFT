@@ -13,10 +13,14 @@ import javax.swing.JPasswordField;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
+
+import org.json.simple.parser.ParseException;
+
 import java.awt.Color;
 import java.awt.Toolkit;
 import javax.swing.SwingConstants;
@@ -115,8 +119,13 @@ public class LoginScreen {
 		debugButton.setBounds(359, 218, 85, 48);
 		debugButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Frontend.Menue.main(null);
-				frmJft.dispose();
+				try {
+					functions.addCityToDB(functions.fetchJSON("resources/cities.json"));
+				} catch (IOException | ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				//frmJft.dispose();
 			}
 		});
 		frmJft.getContentPane().add(debugButton);
