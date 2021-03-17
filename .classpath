@@ -2,13 +2,13 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry excluding="src/|resources/" kind="src" path=""/>
-	<classpathentry kind="lib" path="C:/Users/Jan/Documents/GitHub/JFT/resources/mysql-connector-java-8.0.23.jar">
+	<classpathentry kind="lib" path="C:/Users/Fabian/Documents/GitHub/JFT/resources/mysql-connector-java-8.0.23.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Jan/Documents/GitHub/JFT/resources/json-simple-1.1.1.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk-15.0.2.7-hotspot">
+	<classpathentry kind="lib" path="C:/Users/Fabian/Documents/GitHub/JFT/resources/json-simple-1.1.1.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk-14.0.1">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>

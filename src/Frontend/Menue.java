@@ -2,9 +2,11 @@ package Frontend;
 
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -12,6 +14,7 @@ import javax.swing.JLabel;
 import Backend.Hauptklasse;
 import javax.swing.SwingConstants;
 import javax.swing.JPanel;
+import java.awt.Toolkit;
 
 public class Menue {
 
@@ -45,7 +48,8 @@ public class Menue {
 	 */
 	private void initialize() {
 		frmMen = new JFrame();
-		frmMen.setTitle("MenÃ¼");
+		frmMen.setIconImage(Toolkit.getDefaultToolkit().getImage(Menue.class.getResource("/images/JFTLogo.png")));
+		frmMen.setTitle("Menü");
 		frmMen.getContentPane().setBackground(new java.awt.Color(224, 229, 225));
 		frmMen.setBackground(new Color(250, 235, 215));
 		frmMen.setBounds(100, 100, 450, 300);
@@ -68,22 +72,28 @@ public class Menue {
 
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.GRAY);
-		panel.setBounds(6, 6, 261, 260);
+		panel.setBounds(0, 0, 265, 265);
 		frmMen.getContentPane().add(panel);
 		panel.setLayout(null);
 		JLabel lblNewLabel = new JLabel(welcomeMessage);
 		lblNewLabel.setForeground(Color.WHITE);
-		lblNewLabel.setBounds(6, 6, 249, 53);
+		lblNewLabel.setBounds(5, 52, 249, 53);
 		panel.add(lblNewLabel);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		JLabel lblNewLabel_1 = new JLabel("<html><body>Du kannst unseren Nutzern dein<br>Taxi in Echtzeit zur VerfÃ¼gung stellen</body></html>");
-		lblNewLabel_1.setBounds(10, 71, 234, 53);
+		JLabel lblNewLabel_1 = new JLabel("<html><body>Du kannst unseren Nutzern dein<br>Taxi in Echtzeit zur Verfügung stellen</body></html>");
+		lblNewLabel_1.setBounds(10, 96, 234, 53);
 		panel.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("<html><body>Oder du buchst eine Fahrt bei einem unserer Fahrer</body></html>");
 		lblNewLabel_1_1.setBounds(10, 149, 234, 53);
 		panel.add(lblNewLabel_1_1);
+		
+		JLabel menüLogo = new JLabel("New label");
+		Image image = new ImageIcon(this.getClass().getResource("/images/JFTLogo.png")).getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT);
+		menüLogo.setIcon(new ImageIcon(image));
+		menüLogo.setBounds(95, 6, 70, 70);
+		panel.add(menüLogo);
 		
 				JButton btnNewButton = new JButton("Taxi bestellen");
 				btnNewButton.setBounds(279, 152, 150, 73);

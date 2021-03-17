@@ -1,6 +1,7 @@
 package Frontend;
 
 import java.awt.EventQueue;
+import java.awt.Image;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,6 +14,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
+import java.awt.Toolkit;
 
 public class TaxiBereitstellScreen {
 
@@ -48,74 +51,82 @@ public class TaxiBereitstellScreen {
 	 */
 	private void initialize() {
 		frmDuMchtestDein = new JFrame();
-		frmDuMchtestDein.setTitle("Du mÃ¶chtest dein Taxi bereistellen?");
+		frmDuMchtestDein.setIconImage(Toolkit.getDefaultToolkit().getImage(TaxiBereitstellScreen.class.getResource("/images/JFTLogo.png")));
+		frmDuMchtestDein.setTitle("Du möchtest dein Taxi bereitstellen?");
 		frmDuMchtestDein.setBounds(100, 100, 450, 300);
 		frmDuMchtestDein.getContentPane().setBackground(new java.awt.Color(224, 229, 225));
 		frmDuMchtestDein.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmDuMchtestDein.getContentPane().setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("Welchen Ort:");
-		lblNewLabel.setBounds(16, 6, 206, 16);
-		frmDuMchtestDein.getContentPane().add(lblNewLabel);
+		JLabel welcherOrtLabel = new JLabel("Welchen Ort:");
+		welcherOrtLabel.setBounds(16, 6, 206, 16);
+		frmDuMchtestDein.getContentPane().add(welcherOrtLabel);
 
-		JLabel lblNewLabel_2 = new JLabel("Wie viele Personen?");
-		lblNewLabel_2.setBounds(306, 64, 121, 16);
-		frmDuMchtestDein.getContentPane().add(lblNewLabel_2);
+		JLabel wieVielePersonenLabel = new JLabel("Wie viele Personen?");
+		wieVielePersonenLabel.setBounds(16, 118, 121, 16);
+		frmDuMchtestDein.getContentPane().add(wieVielePersonenLabel);
 
-		JLabel lblNewLabel_1 = new JLabel("Wann hast du Zeit? (hh:mm-hh:mm)");
-		lblNewLabel_1.setBounds(16, 64, 245, 16);
-		frmDuMchtestDein.getContentPane().add(lblNewLabel_1);
+		JLabel wannZeitLabel = new JLabel("Wann hast du Zeit? (hh:mm-hh:mm)");
+		wannZeitLabel.setBounds(16, 64, 245, 16);
+		frmDuMchtestDein.getContentPane().add(wannZeitLabel);
+		
+		JLabel verdienstLabel = new JLabel("");
+		verdienstLabel.setBounds(16, 204, 234, 26);
+		frmDuMchtestDein.getContentPane().add(verdienstLabel);
 
 		timeField = new JTextField();
-		timeField.setBounds(16, 92, 234, 26);
+		timeField.setBounds(16, 81, 234, 26);
 		frmDuMchtestDein.getContentPane().add(timeField);
 		timeField.setColumns(10);
 
-		JLabel lblNewLabel_3 = new JLabel(" â‚¬");
-
-		JButton btnNewButton = new JButton("Verdienst berechnen");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton berechnenButton = new JButton("Verdienst berechnen");
+		berechnenButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				lblNewLabel_3.setText(Backend.functions.calculateMoney(textField.getText())
-						+ "â‚¬ wÃ¼rdest du verdienen");
+				verdienstLabel.setText(Backend.functions.calculateMoney(textField.getText())
+						+ "€ würdest du verdienen");
 			}
 		});
-		btnNewButton.setBounds(6, 174, 192, 29);
-		frmDuMchtestDein.getContentPane().add(btnNewButton);
+		berechnenButton.setBounds(16, 174, 192, 29);
+		frmDuMchtestDein.getContentPane().add(berechnenButton);
 
 		JComboBox<String> comboBox = new JComboBox<String>();
 
-		JButton btnNewButton_1 = new JButton("Los geht's");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton goButton = new JButton("Los geht's");
+		goButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String[] data = { comboBox.getSelectedItem().toString(), timeField.getText(),
 						textField.getText() };
 				DBCOutputStringArray.connect(data, false);
 			}
 		});
-		btnNewButton_1.setBounds(306, 202, 108, 29);
-		frmDuMchtestDein.getContentPane().add(btnNewButton_1);
-
-		lblNewLabel_3.setBounds(16, 215, 182, 16);
-		frmDuMchtestDein.getContentPane().add(lblNewLabel_3);
+		goButton.setBounds(324, 205, 100, 30);
+		frmDuMchtestDein.getContentPane().add(goButton);
 		
 		textField = new JTextField();
-		textField.setBounds(306, 92, 130, 26);
+		textField.setBounds(16, 137, 234, 26);
 		frmDuMchtestDein.getContentPane().add(textField);
 		textField.setColumns(10);
 		
-		JButton btnNewButton_2 = new JButton("New button");
-		btnNewButton_2.addActionListener(new ActionListener() {
+		JButton backButton = new JButton("Zur\u00FCck");
+		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Frontend.Menue.main(null);
 				frmDuMchtestDein.dispose();
 			}
 		});
-		btnNewButton_2.setBounds(393, 23, 43, 29);
-		frmDuMchtestDein.getContentPane().add(btnNewButton_2);
+		backButton.setBounds(225, 205, 100, 30);
+		frmDuMchtestDein.getContentPane().add(backButton);
 		
 		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"Hauptbahnhof", "Schule", "Leine-Center"}));
 		comboBox.setBounds(16, 25, 234, 27);
 		frmDuMchtestDein.getContentPane().add(comboBox);
+		
+		JLabel bestellenTaxiLogo = new JLabel("New label");
+		Image image = new ImageIcon(this.getClass().getResource("/images/JFTLogo.png")).getImage().getScaledInstance(160, 160, Image.SCALE_DEFAULT);
+		bestellenTaxiLogo.setIcon(new ImageIcon(image));
+		bestellenTaxiLogo.setBounds(265, 6, 160, 160);
+		frmDuMchtestDein.getContentPane().add(bestellenTaxiLogo);
+		
+
 	}
 }

@@ -70,7 +70,7 @@ public class popup {
 		} else {
 			statusBox.setFont(new Font("Tahoma", Font.PLAIN, 18));
 			statusBox.setForeground(new Color(128, 0, 0));
-			statusBox.setText("Nicht erfolgreich");
+			statusBox.setText("Benutzername schon vorhanden");
 		}
 		statusBox.setHorizontalAlignment(SwingConstants.CENTER);
 		statusBox.setBounds(10, 11, 163, 35);

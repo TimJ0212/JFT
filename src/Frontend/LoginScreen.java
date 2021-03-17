@@ -133,7 +133,7 @@ public class LoginScreen {
 
 		JPanel neueInfoPanel = new JPanel();
 		neueInfoPanel.setBackground(UIManager.getColor("Button.disabledText"));
-		neueInfoPanel.setBounds(6, 6, 163, 260);
+		neueInfoPanel.setBounds(0, 0, 163, 260);
 		frmJft.getContentPane().add(neueInfoPanel);
 		neueInfoPanel.setLayout(null);
 
