@@ -121,17 +121,9 @@ public class LoginScreen {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					functions.addCitiesToDB(functions.fetchJSONArray("resources/cities.json"));
-				} catch (IOException | ParseException e1) {
+				} catch (Exception e1) {
 					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				//frmJft.dispose();
- catch (ClassNotFoundException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					((Throwable) e1).printStackTrace();
 				}
 			}
 		});
