@@ -100,13 +100,32 @@ public class functions {
 		Object j = (Object) JSONData;
 		JSONArray arr = (JSONArray) j;
 		
+		ResultSet rs = Backend.Database.DBCOutputResultSet.selectTableFromDB("Staedte");
 		
-		
+		Boolean inDB = false;
 		for(Object obj: arr) {
-			String s = "INSERT INTO Staedte VALUES(%s, %d, %d, %s, %i)";
+			
+			String s = "INSERT INTO Staedte VALUES("+'"'+"%s"+'"'+", '%s', '%s',"+'"'+"%s"+'"'+", '%d')";
 			JSONObject jo = (JSONObject) obj;
-			s = s.formatted(jo.get("city_ascii"),jo.get("lat"),jo.get("lng"),jo.get("country"),jo.get("id"));
-			Backend.Database.DBCOutputResultSet.addCitySQL(s);
+			
+			while(rs.next()) {
+				System.out.println("Looking for %s in DB".formatted(jo.get("city_ascii")));
+				if(rs.getRef("Stadt").equals(jo.get("city_ascii"))) {
+					inDB = true;
+					System.out.println("Found %s in DB".formatted(jo.get("city_ascii")));
+					break;
+				}
+				else {
+					
+				}
+			}
+			if(!inDB) {
+				System.out.println("Adding %s to DB...".formatted(jo.get("city_ascii")));
+				s = s.formatted(jo.get("city_ascii"),jo.get("lat").toString(),jo.get("lng").toString(),jo.get("country"),jo.get("id"));
+				Backend.Database.DBCOutputResultSet.addCitySQL(s);
+				System.out.println("Added %s to DB".formatted(jo.get("city_ascii")));
+			}
+			
 		}
 
 	}

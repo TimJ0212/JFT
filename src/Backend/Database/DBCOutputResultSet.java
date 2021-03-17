@@ -125,7 +125,29 @@ public class DBCOutputResultSet {
 		
 		stmt = conn.createStatement();
 
-		ResultSet rs = stmt.executeQuery(SQLCMD);
+		stmt.executeUpdate(SQLCMD);
+		
+		conn.close();
+
+		return null;
+	}
+	
+	@SuppressWarnings("exports")
+	public static ResultSet selectTableFromDB(String table) throws ClassNotFoundException, SQLException {
+		Connection conn = null;
+		Statement stmt = null;
+
+		Class.forName("com.mysql.cj.jdbc.Driver");
+
+		System.out.println("Verbindung zur Datenbank...");
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+		
+		stmt = conn.createStatement();
+		
+		String s = "SELECT * FROM %s".formatted(table);
+		System.out.println(s);
+		ResultSet rs = stmt.executeQuery(s);
 
 		return rs;
 	}
