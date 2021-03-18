@@ -120,7 +120,7 @@ public class LoginScreen {
 		debugButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					//functions.addCitiesToDB(functions.fetchJSONArray("resources/cities.json"));
+					Frontend.map.main(null);
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					((Throwable) e1).printStackTrace();
