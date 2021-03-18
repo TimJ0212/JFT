@@ -5,6 +5,8 @@ public class User {
 	String name;
 	String email;
 	String password;
+	float lat;//y coords
+	float lng;//x coords
 
 	/**
 	 * 
@@ -22,5 +24,15 @@ public class User {
 
 	public String getUsername() {
 		return this.username;
+	}
+	
+	public void setPosition(float x, float y) {
+		this.lat = y;
+		this.lng = x;
+	}
+	
+	public float[] getPosition() {
+		float[] pos = {this.lng, this.lat};
+		return pos;
 	}
 }
