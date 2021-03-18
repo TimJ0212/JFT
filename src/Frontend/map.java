@@ -13,6 +13,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import org.openstreetmap.gui.jmapviewer.JMapViewer;
+
 public class map{
 	
 	private static JFrame frame;
@@ -46,25 +48,13 @@ public class map{
 	   }
 
 	   private static void createUI(final JFrame frame){  
+	      JMapViewer jv = new JMapViewer();
 	      JPanel panel = new JPanel();
 	      LayoutManager layout = new FlowLayout();  
-	      panel.setLayout(layout);       
-
-	      JEditorPane jEditorPane = new JEditorPane();
-	      jEditorPane.setEditable(false);   
-	      URL url= map.class.getResource("resources/map/map.html");
-
-	      try {   
-	         jEditorPane.setPage(url);
-	      } catch (IOException e) { 
-	         jEditorPane.setContentType("text/html");
-	         jEditorPane.setText("<html>Page not found.</html>");
-	      }
-
-	      JScrollPane jScrollPane = new JScrollPane(jEditorPane);
-	      jScrollPane.setPreferredSize(new Dimension(540,400));      
-
-	      panel.add(jScrollPane);
+	      panel.setLayout(layout);  
+	      JScrollPane jsp = new JScrollPane(jv);
+	      jsp.setPreferredSize(new Dimension(540,400));      
+	      panel.add(jsp);
 	      frame.getContentPane().add(panel, BorderLayout.CENTER); 
 	   }
 }
