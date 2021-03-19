@@ -30,7 +30,7 @@ public class map{
         frame = new JFrame("Map");
         final JFXPanel fxPanel = new JFXPanel();
         frame.add(fxPanel);
-        frame.setSize(300, 200);
+        frame.setSize(600, 400);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

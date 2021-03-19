@@ -5,7 +5,7 @@
     <div id="Map" style="height: 100vh;width: 100vw"></div>
     <script src="OpenLayers.js"></script>
     <script>
-        
+
         function getLocation() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(showPosition);
@@ -15,8 +15,30 @@
         }
 
         function showPosition(position) {
-            console.log("Latitude: " + position.coords.latitude +
-            "\nLongitude: " + position.coords.longitude);
+            var lat = position.coords.latitude;
+            var lng = position.coords.longitude;
+            let p = new pos(lng,lat);
+            console.log(p.getLat())
+            return p;
+        }
+
+        class pos{
+            
+            lat;
+            lng;
+            
+            pos(x,y){
+                this.lat=y;
+                this.lng=x;
+            }
+
+            getLat() {
+                return this.lat;
+            }
+
+            getLng(){
+                return this.lng;
+            }
         }
 
         
@@ -25,15 +47,12 @@
         map.zoomToMaxExtent();
         map.setCenter(9.0,50.0,7)
         getLocation()
-        //var div = document.getElementById("Map");
-        //var rect = div.getBoundingClientRect()
-        //var x = rect.width;
-        //var y = rect.height;
+        var p = getLocation;
 
-        //div.style.height=y-15;
-        //div.style.width=x-15
+        console.log(p.lat);
+        
 
-        //console.log(x+"    "+y)
+
 
     </script>
     

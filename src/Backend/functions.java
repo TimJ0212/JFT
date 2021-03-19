@@ -144,16 +144,13 @@ public class functions {
 	
 	
 	public static void addCurrentUserToJSON(User user) throws IOException, ParseException, SQLException, ClassNotFoundException {
-		String userfile = "resources\\currUser.JSON";
+		String userfile = "resources\\map\\currUser.JSON";
 		JSONParser jp= new JSONParser();
 		File f = new File(userfile);
 		FileReader fr = new FileReader(f);
 		JSONObject jo = (JSONObject) jp.parse(fr);
 		jo = (JSONObject) jo.get("logged User");
 		fr.close();
-		
-		int x = 0;
-		
 		
 		String[] keys = {"username","lat","long","location","destination","driver"};
 		
