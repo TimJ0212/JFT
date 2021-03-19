@@ -1,60 +1,76 @@
 package Frontend;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.EventQueue;
-import java.awt.FlowLayout;
-import java.awt.LayoutManager;
-import java.io.IOException;
 import java.net.URL;
 
-import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
+import javax.swing.SwingUtilities;
 
-import org.openstreetmap.gui.jmapviewer.JMapViewer;
+
+
+import javafx.application.Platform;
+import javafx.embed.swing.JFXPanel;
+import javafx.scene.Group;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 
 public class map{
-	
 	private static JFrame frame;
-	public static void main(String[]args) {
-		
-		EventQueue.invokeLater(new Runnable() {
-			@SuppressWarnings("unused")
+	public map() {
+		initAndShowGUI();
+	}
+	
+	private void initAndShowGUI() {
+        // This method is invoked on the EDT thread
+        frame = new JFrame("Map");
+        final JFXPanel fxPanel = new JFXPanel();
+        frame.add(fxPanel);
+        frame.setSize(300, 200);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                initFX(fxPanel);
+            }
+       });
+    }
+
+    private void initFX(JFXPanel fxPanel) {
+        // This method is invoked on the JavaFX thread
+        Scene scene = createScene();
+        fxPanel.setScene(scene);
+    }
+
+    private Scene createScene() {
+        Group  root  =  new  Group();
+        
+        WebView webView = new WebView();
+        WebEngine webEngine = webView.getEngine();
+        
+        webEngine.load(getClass().getResource("resources/map.html").toString());
+        Scene scene = new Scene(webView);
+        return (scene);
+    }
+    
+    public static void main(String[] args) {
+    	EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					map window = new map();
-					map.frame.setVisible(true);
-				}catch(Exception e) {
-					
+					map m = new map();
+					m.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
 			}
 		});
-		
-	}
-	
-	public map() {
-		createWindow();
-	}
-	
-	private static void createWindow() {    
-	      JFrame frame = new JFrame("Map");
-	      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	      createUI(frame);
-	      frame.setSize(560, 450);      
-	      frame.setLocationRelativeTo(null);  
-	      frame.setVisible(true);
-	   }
-
-	   private static void createUI(final JFrame frame){  
-	      JMapViewer jv = new JMapViewer();
-	      JPanel panel = new JPanel();
-	      LayoutManager layout = new FlowLayout();  
-	      panel.setLayout(layout);  
-	      JScrollPane jsp = new JScrollPane(jv);
-	      jsp.setPreferredSize(new Dimension(540,400));      
-	      panel.add(jsp);
-	      frame.getContentPane().add(panel, BorderLayout.CENTER); 
-	   }
+    }
 }
+	
