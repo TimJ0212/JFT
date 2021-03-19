@@ -151,5 +151,27 @@ public class DBCOutputResultSet {
 
 		return rs;
 	}
+	
+	@SuppressWarnings("exports")
+	public static ResultSet selectRSFromDBWHERE(String table, String WHERE) throws ClassNotFoundException, SQLException {
+		Connection conn = null;
+		Statement stmt = null;
+
+		Class.forName("com.mysql.cj.jdbc.Driver");
+
+		System.out.println("Verbindung zur Datenbank...");
+		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+		
+		stmt = conn.createStatement();
+		
+		String s = "SELECT * FROM %s %s".formatted(table,WHERE);
+		System.out.println(s);
+		ResultSet rs = stmt.executeQuery(s);
+
+		return rs;
+	}
+	
+	
 
 }// end FirstExample

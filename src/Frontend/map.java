@@ -21,13 +21,12 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
 public class map{
-	private static JFrame frame;
+	private JFrame frame;
 	public map() {
 		initAndShowGUI();
 	}
 	
 	private void initAndShowGUI() {
-        // This method is invoked on the EDT thread
         frame = new JFrame("Map");
         final JFXPanel fxPanel = new JFXPanel();
         frame.add(fxPanel);
@@ -44,18 +43,16 @@ public class map{
     }
 
     private void initFX(JFXPanel fxPanel) {
-        // This method is invoked on the JavaFX thread
         Scene scene = createScene();
         fxPanel.setScene(scene);
     }
 
     private Scene createScene() {
-        Group  root  =  new  Group();
-        
+      
         WebView webView = new WebView();
         WebEngine webEngine = webView.getEngine();
         
-        webEngine.load(getClass().getResource("resources/map.html").toString());
+        webEngine.load(/*getClass().getResource("resources/map.html").toString()*/"file:///C:/Users/Jan/Documents/GitHub/JFT/resources/map/map.html");
         Scene scene = new Scene(webView);
         return (scene);
     }

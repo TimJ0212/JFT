@@ -1,7 +1,9 @@
 package Backend;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -44,12 +46,13 @@ public class functions {
 		return s;
 	}
 
-	public static Boolean login(String username, String password) throws SQLException, ClassNotFoundException {
+	public static Boolean login(String username, String password) throws SQLException, ClassNotFoundException, IOException, ParseException {
 		ResultSet rs = DBCOutputResultSet.fetchUserData(username);
 		while (rs.next()) {
 			if (password.equals(decrypt(rs.getString(2)))) { // NEW: Decrypt
 				System.out.println(rs.getString(2));
 				Hauptklasse.loggedUser = new User(rs.getString(1), encrypt(password), null, null);
+				addCurrentUserToJSON(Hauptklasse.loggedUser);
 				return true;
 			}
 		}
@@ -139,4 +142,43 @@ public class functions {
 		return arr;
 	}
 	
+	
+	public static void addCurrentUserToJSON(User user) throws IOException, ParseException, SQLException, ClassNotFoundException {
+		String userfile = "resources\\currUser.JSON";
+		JSONParser jp= new JSONParser();
+		File f = new File(userfile);
+		FileReader fr = new FileReader(f);
+		JSONObject jo = (JSONObject) jp.parse(fr);
+		jo = (JSONObject) jo.get("logged User");
+		fr.close();
+		
+		int x = 0;
+		
+		
+		String[] keys = {"username","lat","long","location","destination","driver"};
+		
+		jo.replace(keys[0], user.username);
+		jo.replace(keys[1], user.lat);
+		jo.replace(keys[2], user.lng);
+		ResultSet rs = Backend.Database.DBCOutputResultSet.fetchUserData(user.username);
+		System.out.println(user.username);
+		Boolean driver = false ;
+		
+		while(rs.next()) {
+			driver = rs.getBoolean("Fahrer");
+		}
+		
+		//rs = Backend.Database.DBCOutputResultSet.selectRSFromDBWHERE("Staedte", "WHERE conatains(lat,'%f') AND contains(lng,'%f')".formatted(user.lat,user.lng));
+		float lat = 0;
+		float lng = 0;
+		//lat = rs.getFloat("lat");
+		//lng = rs.getFloat("lng");
+		System.out.println(driver);
+		
+		//jo.replace(keys[3], rs.getObject("Stadt"));
+		jo.replace(keys[5], (Boolean) driver);
+		FileWriter fw = new FileWriter(f);
+		fw.write("{"+(char)'"'+"logged User"+'"'+":"+jo.toJSONString()+"}");
+		fw.close();	
+	}
 }
