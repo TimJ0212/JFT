@@ -165,7 +165,7 @@ public class functions {
 			driver = rs.getBoolean("Fahrer");
 		}
 		
-		//rs = Backend.Database.DBCOutputResultSet.selectRSFromDBWHERE("Staedte", "WHERE conatains(lat,'%f') AND contains(lng,'%f')".formatted(user.lat,user.lng));
+		rs = Backend.Database.DBCOutputResultSet.selectRSFromDBWHERE("Staedte", "WHERE conatains(lat,'%f') AND contains(lng,'%f')".formatted(user.lat,user.lng));
 		float lat = 0;
 		float lng = 0;
 		//lat = rs.getFloat("lat");
