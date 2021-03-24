@@ -89,6 +89,10 @@ public class TaxiBestellScreen {
 		frmTaxiBestellen.getContentPane().add(txtZeit);
 		txtZeit.setColumns(10);
 		
+		
+		Frontend.map.setDestination("Hannover"); //NEED TXT-Box with destination and start city
+		Frontend.map.setStart("");
+		
 		btnNewButton_1 = new JButton("Fahrt nehmen");
 		btnNewButton_1.setBounds(302, 174, 130, 29);
 		frmTaxiBestellen.getContentPane().add(btnNewButton_1);

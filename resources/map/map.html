@@ -1,48 +1,34 @@
 <!DOCTYPE HTML>
 <html>
-  <head>
-    <title>OpenLayers Demo</title>
-    <style type="text/css">
-      html, body, #basicMap {
-          width: 100%;
-          height: 100%;
-          margin: 0;
-      }
-    </style>
-    <script src="OpenLayers.js"></script>
-    <script>
+<head>
+<title>OpenLayers Simplest Example</title>
+</head>
+<body>
 
-function success(pos) {
-        var crd = pos.coords;
+<div id="Map" style="height:95vh"></div>
+<script src="OpenLayers.js"></script>
+<script>
+    var slon            = 9.738600;
+    var slat            = 52.374400;
+    var dlon            = 9.813300;
+    var dlat            = 52.307700;
+    var zoom           = 12;
 
-        console.log('Your current position is:');
-        console.log(`Latitude : ${crd.latitude}`);
-        console.log(`Longitude: ${crd.longitude}`);
-        console.log(`More or less ${crd.accuracy} meters.`);
+    var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
+    var toProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+    var sPosition       = new OpenLayers.LonLat(slon, slat).transform( fromProjection, toProjection);
+    var dPosition       = new OpenLayers.LonLat(dlon, dlat).transform( fromProjection, toProjection);
 
-        init(crd.longitude,crd.latitude);
-    }
-      function init(lng,lat) {
-        map = new OpenLayers.Map("basicMap");
-        var mapnik         = new OpenLayers.Layer.OSM();
-        var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
-        var toProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+    map = new OpenLayers.Map("Map");
+    var mapnik         = new OpenLayers.Layer.OSM();
+    map.addLayer(mapnik);
 
-        var position       = new OpenLayers.LonLat(lng,lat).transform( fromProjection, toProjection);
-        var zoom           = 15; 
+    var markers = new OpenLayers.Layer.Markers( "Markers" );
+    map.addLayer(markers);
+    markers.addMarker(new OpenLayers.Marker(sPosition));
+    markers.addMarker(new OpenLayers.Marker(dPosition));
 
-        var markers = new OpenLayers.Layer.Markers( "Markers" );
-        map.addLayer(mapnik);
-        map.addLayer(markers);
-    
-        markers.addMarker(new OpenLayers.Marker(position));
-        
-        
-        map.setCenter(position, zoom );
-      }
-    </script>
-  </head>
-  <body onload="navigator.geolocation.getCurrentPosition(success)">
-    <div id="basicMap"></div>
-  </body>
+    map.setCenter(sPosition, zoom);
+</script>
+</body>
 </html>
