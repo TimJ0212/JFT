@@ -84,13 +84,22 @@ public class TaxiBestellScreen {
 		searchButton.setBounds(149, 83, 81, 29);
 		frmTaxiBestellen.getContentPane().add(searchButton);
 		
+		JButton mapButton = new JButton("Route anzeigen");
+		mapButton.setBounds(280, 90, 150, 29);
+		frmTaxiBestellen.getContentPane().add(mapButton);
+		mapButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Frontend.map.setDestination("Hannover"); //NEED TXT-Box with destination and start city
+				Frontend.map.setStart("Laatzen");
+				Frontend.map.main(null);
+			}
+		});
+		
+		
 		txtZeit = new JTextField();
 		txtZeit.setBounds(131, 33, 130, 26);
 		frmTaxiBestellen.getContentPane().add(txtZeit);
 		txtZeit.setColumns(10);
-		
-		Frontend.map.setDestination("Hannover"); //NEED TXT-Box with destination and start city
-		Frontend.map.setStart("Laatzen");
 		
 		btnNewButton_1 = new JButton("Fahrt nehmen");
 		btnNewButton_1.setBounds(302, 174, 130, 29);

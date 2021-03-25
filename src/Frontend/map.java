@@ -137,7 +137,7 @@ public class map{
     			"    var slat            = %f;\r\n".formatted(Double.parseDouble(st[0])).replace(',', '.') + 
     			"    var dlon            = %f;\r\n".formatted(Double.parseDouble(dt[1])).replace(',', '.') + 
     			"    var dlat            = %f;\r\n".formatted(Double.parseDouble(dt[0])).replace(',', '.') + 
-    			"    var zoom            = 12;\r\n" + 
+    			"    var zoom            = 10;\r\n" + 
     			"\r\n" + 
     			"    var fromProjection  = new OpenLayers.Projection(\"EPSG:4326\");   // Transform from WGS 1984\r\n" + 
     			"    var toProjection    = new OpenLayers.Projection(\"EPSG:900913\"); // to Spherical Mercator Projection\r\n" + 
