@@ -52,7 +52,7 @@ public class functions {
 			if (password.equals(decrypt(rs.getString(2)))) { // NEW: Decrypt
 				System.out.println(rs.getString(2));
 				Hauptklasse.loggedUser = new User(rs.getString(1), encrypt(password), null, null);
-				addCurrentUserToJSON(Hauptklasse.loggedUser);
+				//addCurrentUserToJSON(Hauptklasse.loggedUser);
 				return true;
 			}
 		}
@@ -67,9 +67,31 @@ public class functions {
 		return !rs.next();
 	}
 
-	public static String calculateMoney(String personen) {
-		return String.valueOf(Integer.valueOf(personen) * 10);
-
+	public static String calculateMoney(String personen, double dLat, double dLng, double sLat, double sLng) {
+		
+		dLat = degreeToRadian(dLat);
+		dLng = degreeToRadian(dLng);
+		sLat = degreeToRadian(sLat);
+		sLng = degreeToRadian(sLng);
+		
+		double dist = sLat * sLng - dLat * dLng;
+		double distVal = dist * 812.113;
+		double fVal = 0.0;
+		if(distVal<0) {
+			distVal = -distVal;
+			fVal = distVal * Math.E * 3.96;
+		}else {
+			fVal = distVal * Math.E * 3.96;
+		}
+		
+		return String.valueOf(Integer.valueOf(personen) * Double.parseDouble("%010.002f".formatted(fVal).replace(',', '.')));
+				
+				
+	}
+	
+	public static double degreeToRadian(double degree) {
+		double radian = (Math.PI/180)*degree;
+		return radian;
 	}
 
 	public static String encrypt(String pw) {

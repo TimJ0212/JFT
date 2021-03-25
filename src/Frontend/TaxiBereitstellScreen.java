@@ -11,6 +11,7 @@ import javax.swing.JTextField;
 import Backend.Database.DBCOutputStringArray;
 
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
@@ -23,6 +24,8 @@ public class TaxiBereitstellScreen {
 	private JTextField timeField;
 	private JTextField textField;
 
+	
+	
 	/**
 	 * Launch the application.
 	 */
@@ -82,7 +85,32 @@ public class TaxiBereitstellScreen {
 		JButton berechnenButton = new JButton("Verdienst berechnen");
 		berechnenButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				verdienstLabel.setText(Backend.functions.calculateMoney(textField.getText())
+				
+				String[] sta = {};
+				try {
+					sta = Frontend.map.getCoords(Frontend.map.getStart());
+				} catch (ClassNotFoundException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				} catch (SQLException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+				String[] des = {};
+				try {
+					des = Frontend.map.getCoords(Frontend.map.getDestination());
+				} catch (ClassNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				double[] dSta = {Double.parseDouble(sta[0]),Double.parseDouble(sta[1])};
+				double[] dDes = {Double.parseDouble(des[0]),Double.parseDouble(des[1])};
+				
+				verdienstLabel.setText(Backend.functions.calculateMoney(textField.getText(),dDes[0], dDes[1],dSta[0],dSta[1])
 						+ "€ würdest du verdienen");
 			}
 		});
@@ -99,6 +127,11 @@ public class TaxiBereitstellScreen {
 				DBCOutputStringArray.connect(data, false);
 			}
 		});
+		
+		Frontend.map.setDestination("Hannover"); //NEED TXT-Box with destination and start city
+		Frontend.map.setStart("Laatzen");
+		
+		
 		goButton.setBounds(324, 205, 100, 30);
 		frmDuMchtestDein.getContentPane().add(goButton);
 		

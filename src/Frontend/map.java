@@ -66,13 +66,21 @@ public class map{
 	public static void setStart(String start_) {
 		start = start_;
 	}
+	
+	public static String getDestination() {
+		return destination;
+	}
+	
+	public static String getStart() {
+		return start;
+	}
 
     private void initFX(JFXPanel fxPanel) throws IOException, ClassNotFoundException, SQLException {
         Scene scene = createScene();
         fxPanel.setScene(scene);
     }
 
-    private static String[] getCoords(String city) throws SQLException, ClassNotFoundException {
+    static String[] getCoords(String city) throws SQLException, ClassNotFoundException {
     	
     	String req = "WHERE Stadt='%s'".formatted(city);
     	ResultSet rs = Backend.Database.DBCOutputResultSet.selectRSFromDBWHERE("Staedte", req);
